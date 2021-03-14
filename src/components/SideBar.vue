@@ -62,7 +62,7 @@
         <div class="accordion-body">
           <router-link to="/employees"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Employees</button></router-link>
           <router-link to="/add-employee"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add Employees</button></router-link>
-          <router-link to="/time-class-report"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Report</button></router-link>
+          <router-link to="/report-employee"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Report</button></router-link>
         </div>
     </div>
   </div>

@@ -24,11 +24,12 @@
       </button>
     </h2>
     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">All Students</button>
-        <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add Students</button>
-        <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Student Report</button>
-      </div>
+        <div class="accordion-body">
+          <router-link to="/student"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Student</button></router-link>
+          <router-link to="/add-student"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add Student</button></router-link>
+          <router-link to="/student-report"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Report</button></router-link>
+          <router-link to="/subject"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Subject</button></router-link>
+        </div>
     </div>
   </div>
 
@@ -59,9 +60,9 @@
 
       <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">All Students</button>
-          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add Students</button>
-          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Student Report</button>
+          <router-link to="/employees"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Employees</button></router-link>
+          <router-link to="/add-employee"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add Employees</button></router-link>
+          <router-link to="/time-class-report"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Report</button></router-link>
         </div>
     </div>
   </div>

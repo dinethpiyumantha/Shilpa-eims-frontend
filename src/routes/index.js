@@ -23,6 +23,10 @@ import AddStudent from '../views/student/AddStudent'
 import SReport from '../views/student/Report'
 import Subject from '../views/student/Subject'
 
+import Examination from '../views/examination/Examination'
+import AddExamination from '../views/examination/AddExamination'
+import EReport from '../views/examination/Report'
+
 export default new Router({
   routes: [
     {
@@ -95,11 +99,22 @@ export default new Router({
           name: 'Subject',
           component: Subject
         },
+        // Pawan
         {
-          path: '/subject',
-          name: 'Subject',
-          component: Subject
-        }
+          path: '/examination',
+          name: 'Examination',
+          component: Examination
+        },
+        {
+          path: '/add-examination',
+          name: 'Add Examination',
+          component: AddExamination
+        },
+        {
+          path: '/examination-report',
+          name: 'Examination Report',
+          component: EReport
+        },
       ]
     },
     {

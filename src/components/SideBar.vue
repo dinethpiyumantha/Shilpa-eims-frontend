@@ -9,10 +9,12 @@
 
   <div class="accordion-item">
     
-    <button class="btn btn-white w-100 rounded-0 text-left" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+    <router-link to="/home">
+    <button class="btn btn-white w-100 rounded-0 text-left" type="button"data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
       <i class="fas fa-home"></i>
       <span>Home</span>
     </button>
+    </router-link>
   </div>
 
 

@@ -4,6 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Dashboard from '../views/Dashboard'
+import About from '../views/About'
 import UserHome from '../views/user-views/Home'
 
 import Home from '../views/Home'
@@ -29,6 +30,11 @@ export default new Router({
       name: 'Admin Panel',
       component: Dashboard,
       children: [
+        {
+          path: '/about',
+          name: 'About',
+          component: About
+        },
         {
           path: '/home',
           name: 'Home',
@@ -89,6 +95,11 @@ export default new Router({
           name: 'Subject',
           component: Subject
         },
+        {
+          path: '/subject',
+          name: 'Subject',
+          component: Subject
+        }
       ]
     },
     {

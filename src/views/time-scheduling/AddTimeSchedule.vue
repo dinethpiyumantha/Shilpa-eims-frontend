@@ -116,18 +116,10 @@
 
             </div>
         </div>
-        <!-- <message/> -->
     </div>
 </template>
 
 <script>
-// import Message from '../../components/Alert'
-
-// export default {
-//     components: {
-//         'message':Message
-//     }
-// }
 </script>
 
 <style scoped>

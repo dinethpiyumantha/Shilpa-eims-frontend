@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
 
-                <h4>Edit Employee</h4>
+                <h4>Employee information</h4>
                     <div class="row g-3 align-items-center d-flex flex-row-reverse">
                             <div class="col-auto">
                                 <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" placeholder="EMP1021">

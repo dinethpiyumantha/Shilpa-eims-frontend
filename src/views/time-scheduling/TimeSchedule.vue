@@ -8,7 +8,7 @@
                     <button class="btn btn-primary mt-3"><i class="fa fa-plus mx-2" aria-hidden="true"></i> Create a Time Schedule</button>
                 </router-link>
                 
-                <div class="d-flex flex-row gap-5 mt-5 mb-4">
+                <div class="d-flex flex-row gap-5 mt-5 mb-4 justify-content-between">
                     <div class="d-flex flex-row gap-3">
                         <label for="inputPassword" class="col-form-label">Day</label>
                         <div class="d-flex flex-row gap-2 w-100">

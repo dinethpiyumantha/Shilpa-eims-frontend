@@ -30,5 +30,47 @@
                 </div>
             </div>
         </div>
+
+        <div class="card mt-5">
+            <div class="card-body">
+                
+                
+                <div class="d-flex flex-row justify-content-between mt-3 mb-4">
+                    <h5>All Classrooms</h5>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search classroom" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+
+                <div class="mt-3">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Capacity</th>
+                            <th scope="col">Width</th>
+                            <th scope="col">Length</th>
+                            <th scope="col">Area</th>
+                            <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <th scope="row">A1</th>
+                            <td>250</td>
+                            <td>5'</td>
+                            <td>12'</td>
+                            <td>16 Feet <sup>2</sup></td>
+                            <td>
+                                <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
+                                <button class="btn my-0 py-0"><i class="fa fa-trash"/></button>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </template>

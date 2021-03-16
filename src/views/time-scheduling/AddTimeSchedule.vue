@@ -30,7 +30,7 @@
 
                 <div class="d-flex flex-row justify-content-between my-4">
                     <div class="d-flex col-4 flex-row gap-3">
-                        <label for="inputPassword" class="col-form-label">Special Date</label>
+                        <label for="inputPassword" class="col-form-label lbl-common">Special Date</label>
                         <div class="">
                             <input type="date" class="form-control" id="inputPassword">
                         </div>
@@ -69,8 +69,8 @@
 
 
                 <div class="d-flex flex-row justify-content-between">
-                    <div class="d-flex col-6 flex-row gap-3">
-                        <label for="inputPassword" class="col-form-label">Teacher</label>
+                    <div class="d-flex col-4 flex-row gap-3">
+                        <label for="inputPassword" class="col-form-label lbl-common">Teacher</label>
                         <div class="d-flex flex-row gap-2">
                             <select class="form-select" aria-label="Default select example">
                             <option selected>Select</option>
@@ -81,7 +81,7 @@
                         </div>
                     </div>
 
-                    <div class="d-flex col-6 flex-row gap-3">
+                    <div class="d-flex col-4 flex-row gap-3">
                         <label for="inputPassword" class="col-form-label">Subject</label>
                         <div class="d-flex flex-row gap-2">
                             <select class="form-select" aria-label="Default select example">
@@ -124,4 +124,7 @@
 
 <style scoped>
 
+.lbl-common{
+    width: 90px;
+}
 </style>

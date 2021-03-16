@@ -1,7 +1,7 @@
 <template>
     
 <div class="accordion col-2 m-0 p-0 bg-white" data-bs-spy="scroll" id="accordionExample">
-  <nav class="navbar navbar-light bg-white m-0 p-0 w-100">
+  <nav class="navbar navbar-light m-0 p-0 w-100">
     <a class="navbar-brand text-centre  m-0 p-3 w-100" href="#">
       <img :src="require('../assets/logo.png')" height="40" alt="vgjvjhvj"/>
     </a>
@@ -10,7 +10,7 @@
   <div class="accordion-item">
     
     <router-link to="/home">
-    <button class="btn btn-white w-100 rounded-0 text-left" type="button"data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+    <button class="btn btn-white w-100 rounded-0 text-left" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
       <i class="fas fa-home"></i>
       <span>Home</span>
     </button>

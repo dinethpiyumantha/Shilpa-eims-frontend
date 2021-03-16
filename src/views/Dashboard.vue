@@ -27,6 +27,6 @@ export default {
 
 <style scoped>
     .dashboad{
-        height: calc(100vh - 40px);
+        height: calc(100vh);
     }
 </style>

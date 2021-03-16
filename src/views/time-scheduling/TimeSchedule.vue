@@ -8,6 +8,32 @@
                     <button class="btn btn-primary mt-3"><i class="fa fa-plus mx-2" aria-hidden="true"></i> Create a Time Schedule</button>
                 </router-link>
                 
+                <div class="d-flex flex-row gap-5 mt-5 mb-4">
+                    <div class="d-flex flex-row gap-3">
+                        <label for="inputPassword" class="col-form-label">Day</label>
+                        <div class="d-flex flex-row gap-2 w-100">
+                            <select class="form-select" aria-label="Default select example">
+                            <option selected>Select</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-row gap-3">
+                        <label for="inputPassword" class="col-form-label">Date</label>
+                        <div class="">
+                            <input type="date" class="form-control" id="inputPassword">
+                        </div>
+                    </div>
+
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+
                 <div class="mt-3">
                     <table class="table table-hover">
                         <thead>

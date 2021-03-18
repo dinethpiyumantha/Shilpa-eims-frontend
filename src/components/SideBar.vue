@@ -1,6 +1,6 @@
 <template>
     
-<div class="accordion col-2 m-0 p-0 bg-white" data-bs-spy="scroll" id="accordionExample">
+<div class="accordion col-2 m-0 p-0 bg-white overflow-auto" data-bs-spy="scroll" id="accordionExample">
   <nav class="navbar navbar-light m-0 p-0 w-100">
     <a class="navbar-brand text-centre  m-0 p-3 w-100" href="#">
       <img :src="require('../assets/logo.png')" height="40" alt="vgjvjhvj"/>

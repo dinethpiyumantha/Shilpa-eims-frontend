@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Shilpa Educational Institute Management System</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon" @click="toggle"></span>
+                <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 
@@ -24,27 +24,10 @@
 </template>
 
 <script>
-    import fullscreen from 'vue-fullscreen'
-    import Dashboard from '../views/Dashboard'
 
-    import Vue from 'vue'
-    Vue.use(fullscreen)
-    export default {
-    methods: {
-      toggle () {
-        Dashboard.$refs['fullscreen'].toggle() // recommended
-        // Dashboard.fullscreen = !Dashboard.fullscreen // deprecated
-      },
-      fullscreenChange (fullscreen) {
-        Dashboard.fullscreen = fullscreen
-      }
-    },
-    data() {
-      return {
-        fullscreen: false
-      }
-    }
-  }
+export default {
+  
+}
 </script>
 
 

@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary"><i class="fa fa-plus mr-3" aria-hidden="true"></i>Add Classroom</button>                  
-                            <input v-on:click="clearForm" type="button" class="btn btn-outline-primary w-auto" value="clear">
+                            <input v-on:click="clearForm" type="button" class="btn btn-outline-primary w-auto" value="Clear">
                     </form>
                 </div>
             </div>

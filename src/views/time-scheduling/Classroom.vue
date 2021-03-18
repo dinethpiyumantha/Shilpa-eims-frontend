@@ -29,6 +29,7 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary"><i class="fa fa-plus mr-3" aria-hidden="true"></i>Add Classroom</button>                  
+                            <input v-on:click="clearForm" type="button" class="btn btn-outline-primary w-auto" value="clear">
                     </form>
                 </div>
             </div>
@@ -81,7 +82,6 @@
 
 <script>
 import { required } from 'vuelidate/lib/validators'
-
 export default {
     name: 'Classroom',
     data: function() {
@@ -104,6 +104,9 @@ export default {
             this.$v.$touch();
             if(this.$v.$pendding || this.$v.$error) return;
             alert('Data Submited')
+        },
+        clearForm: function() {
+            Object.assign(this.$data, this.$options.data.call(this));
         }
     }
 }

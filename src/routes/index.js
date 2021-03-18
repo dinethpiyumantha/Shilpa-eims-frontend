@@ -27,6 +27,11 @@ import Examination from '../views/examination/Examination'
 import AddExamination from '../views/examination/AddExamination'
 import EReport from '../views/examination/Report'
 
+import FeePayment from '../views/finance/FeePayment'
+import PReport from '../views/finance/Report'
+import Salary from '../views/finance/Salary'
+import SmallExpenses from '../views/finance/SmallExpenses'
+
 export default new Router({
   routes: [
     {
@@ -44,6 +49,7 @@ export default new Router({
           name: 'Home',
           component: Home
         },
+        // Dineth
         {
           path: '/schedule',
           name: 'Schedule',
@@ -64,6 +70,7 @@ export default new Router({
           name: 'Time Schedule and Classroom Report',
           component: TCReport
         },
+        // Asanka
         {
           path: '/add-employee',
           name: 'Add Employee',
@@ -79,6 +86,7 @@ export default new Router({
           name: 'Employee Report',
           component: EmpReport
         },
+        // Lakshan
         {
           path: '/student',
           name: 'Student',
@@ -114,6 +122,27 @@ export default new Router({
           path: '/examination-report',
           name: 'Examination Report',
           component: EReport
+        },
+        // Deen
+        {
+          path: '/fee-payment',
+          name: 'Fee Payment',
+          component: FeePayment
+        },
+        {
+          path: '/payment-report',
+          name: 'Payment Report',
+          component: PReport
+        },
+        {
+          path: '/salary',
+          name: 'Fee Payment',
+          component: Salary
+        },
+        {
+          path: '/small-expenses',
+          name: 'Small Expenses',
+          component: SmallExpenses
         },
       ]
     },

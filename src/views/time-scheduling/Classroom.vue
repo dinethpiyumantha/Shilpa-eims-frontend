@@ -7,26 +7,29 @@
                     <div class="card-header">
                         Add a Classroom
                     </div>
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col">
-                                <label for="">Classroom ID</label>
-                                <input type="text" class="form-control" placeholder="Ex: 'A001'" aria-label="First name">
-                            </div>
-                            <div class="col">
-                                <label for="">Capacity</label>
-                                <input type="text" class="form-control" placeholder="Numbers only*" aria-label="Last name">
-                            </div>
-                            <div class="col">
-                                <label for="">Capacity</label>
-                                <div class="d-flex">
-                                    <input type="text" class="form-control mr-3" placeholder="Width" aria-label="Last name">
-                                    <input type="text" class="form-control" placeholder="Length" aria-label="Last name">
+
+                    <form class="card-body" v-on:submit.prevent="submit">
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="">Classroom ID</label>
+                                    <input type="text" v-model.trim="$v.classId.$model" :class="{'is-invalid': validationStatus($v.classId)}" class="form-control text-uppercase" placeholder="Ex: 'A001'" aria-label="First name">
+                                    <div v-if="!$v.classId.required" class="invalid-feedback">Classroom ID is required.</div>
+                                </div>
+                                <div class="col">
+                                    <label for="">Capacity</label>
+                                    <input type="text" v-model.trim="$v.capacity.$model" :class="{'is-invalid': validationStatus($v.capacity)}" class="form-control" placeholder="Numbers only*" aria-label="Last name">
+                                    <div v-if="!$v.capacity.required" class="invalid-feedback">Student Capacity is required.</div>
+                                </div>
+                                <div class="col">
+                                    <label for="">Area (Ft & in)</label>
+                                    <div class="d-flex">
+                                        <input type="text" v-model.trim="width" class="form-control mr-3" placeholder="Width" aria-label="Last name">
+                                        <input type="text" v-model.trim="length" class="form-control" placeholder="Length" aria-label="Last name">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-plus mr-3" aria-hidden="true"></i>Add Classroom</button>                  
-                    </div>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus mr-3" aria-hidden="true"></i>Add Classroom</button>                  
+                    </form>
                 </div>
             </div>
         </div>
@@ -74,3 +77,36 @@
         </div>
     </div>
 </template>
+
+
+<script>
+import { required } from 'vuelidate/lib/validators'
+
+export default {
+    name: 'Classroom',
+    data: function() {
+        return {
+            classId: '',
+            capacity: '',
+            width: '',
+            length: ''
+        }
+    },
+    validations: {
+        classId: {required},
+        capacity: {required}
+    },
+    methods: {
+        validationStatus: function(validation) {
+            return typeof validation != "undefined" ? validation.$error: false;
+        },
+        submit: function() {
+            this.$v.$touch();
+            if(this.$v.$pendding || this.$v.$error) return;
+            alert('Data Submited')
+        }
+    }
+}
+</script>
+
+

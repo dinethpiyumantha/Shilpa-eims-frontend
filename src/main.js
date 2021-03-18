@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import Vuelidate from 'vuelidate'
 
 import 'bootstrap/dist/css/bootstrap.css'
 
@@ -16,6 +17,8 @@ library.add(faUserSecret)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
+
+Vue.use(Vuelidate);
 
 new Vue({
   el: '#app',

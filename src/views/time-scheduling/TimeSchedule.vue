@@ -34,6 +34,8 @@
                     </form>
                 </div>
 
+
+<!-- Time scheduling view -->
                 <div class="mt-3">
                     <table class="table table-hover">
                         <thead>

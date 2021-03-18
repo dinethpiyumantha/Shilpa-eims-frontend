@@ -24,13 +24,13 @@
                     <div class="d-flex flex-row gap-3">
                         <label for="inputPassword" class="col-form-label">Date</label>
                         <div class="">
-                            <input type="date" class="form-control" id="inputPassword">
+                            <input type="date" class="form-control text-uppercase" id="inputPassword">
                         </div>
                     </div>
 
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                 </div>
 

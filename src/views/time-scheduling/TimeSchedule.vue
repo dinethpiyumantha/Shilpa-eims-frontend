@@ -35,7 +35,7 @@
                 </div>
 
 
-<!-- Time scheduling view -->
+<!-- Time scheduling view tporpose-->
                 <div class="mt-3">
                     <table class="table table-hover">
                         <thead>

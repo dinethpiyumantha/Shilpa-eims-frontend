@@ -2,6 +2,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import Vuelidate from 'vuelidate'
 
+import Vuetify from 'vuetify'
+import vueResource from 'vue-resource'
+import VueSwal from 'vue-swal'
+
+Vue.use(VueSwal)
+Vue.use(vueResource)
+Vue.use(Vuetify)
+
 import 'bootstrap/dist/css/bootstrap.css'
 
 import { library } from '@fortawesome/fontawesome-svg-core'

@@ -54,9 +54,6 @@
                             <button type="submit" class="btn btn-primary"><i class="fa fa-plus mr-3" aria-hidden="true"></i>Add Classroom</button>                  
                             <input v-on:click="clearForm" type="button" class="btn btn-outline-primary w-auto" value="Clear">
                     </form>
-                
-                    
-
                 </div>
             </div>
         </div>
@@ -114,6 +111,7 @@
 
 <script>
 import { required } from 'vuelidate/lib/validators'
+import ClassroomUpdate from './ClassroomUpdate'
 
 export default {
     name: 'Classroom',
@@ -130,6 +128,9 @@ export default {
             search:'',
             isResEmpty: false
         }
+    },
+    components: {
+        'classroom-upadate':ClassroomUpdate
     },
     created() {
         this.$http.get('http://localhost:8000/api/getallclassrooms')

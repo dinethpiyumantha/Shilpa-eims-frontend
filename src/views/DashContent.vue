@@ -10,9 +10,9 @@
                 
                 </div>
                 <div>
-                    <button class="btn btn-white text-dark"><i class="fas fa-bell"></i></button>
-                    <button class="btn btn-white text-dark"><i class="fas fa-expand"></i></button>
-                    <router-link to="/about"><button class="btn btn-white text-dark"><i class="fa fa-info-circle text-secondary" aria-hidden="true"></i></button></router-link>
+                    <button title="Notifications" class="btn btn-white text-dark"><i class="fas fa-bell"></i></button>
+                    <button title="Fullscreen" class="btn btn-white text-dark"><i class="fas fa-expand"></i></button>
+                    <router-link to="/about"><button title="About Us" class="btn btn-white text-dark"><i class="fa fa-info-circle text-secondary" aria-hidden="true"></i></button></router-link>
                     <router-link to="/about"><button class="btn btn-white text-dark"><i class="fas fa-ellipsis-v"></i></button></router-link>
                 </div>
             </div>

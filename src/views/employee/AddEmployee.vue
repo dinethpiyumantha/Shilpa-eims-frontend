@@ -4,6 +4,12 @@
         <div class="card">
             <div class="card-body">
 
+                
+                 <router-link to="employees">
+                    <button class="btn btn-outline-primary mb-3 mt-3"><i class="fa fa-chevron-left mx-2" aria-hidden="true"></i> Back</button>
+                </router-link>
+
+
                 <h4> Employee information</h4>
                     <div class="row g-3 align-items-center d-flex flex-row-reverse">
                             <div class="col-auto">
@@ -101,9 +107,8 @@
                                 <label for="formGroupExampleInput" class="form-label">Gender</label>
                                 <select class="form-select"    v-model.trim="$v.items.gender.$model" :class="{'is-invalid': validationStatus($v.items.gender)}" aria-label="Default select example">
                                     <option selected>Open this select menu</option>
-                                    <option value="1">Male</option>
-                                    <option value="2">Female</option>
-                                    <option value="3">XXXX</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
                                     </select>
                                  <div v-if="!$v.items.gender.required" class="text-danger"><small>  Text is required.</small></div> 
 
@@ -165,9 +170,9 @@
                             <label for="formGroupExampleInput2" class="form-label">Gardian's Type</label>
                             <select class="form-select"    v-model.trim="$v.items.GardianType.$model" :class="{'is-invalid': validationStatus($v.items.GardianType)}" aria-label="Default select example">
                                         <option selected>Open this select menu</option>
-                                        <option value="1">Parent</option>
-                                        <option value="2">Brothers</option>
-                                        <option value="3">others</option>
+                                        <option value="Parent">Parent</option>
+                                        <option value="Brothers">Brothers</option>
+                                        <option value="others">others</option>
                                         </select> 
                                          <div v-if="!$v.items.GardianType.required" class="text-danger"><small>  Text is required.</small></div>  
                        
@@ -282,6 +287,36 @@ export default {
                 // ssreturn;
             }
             else {
+
+                const employees ={
+
+                'nameInitial':this.items.nameInitial,
+                'fullName':this.items.fullName ,
+                'address1' :this.items.address1 ,
+                'address2' :this.items.address2,
+                'city' :this.items.city,
+                'date' :this.items.date,
+                'Mnumber' :this.items.Mnumber,
+                'Lnumber' :this.items.Lnumber,
+                'email' :this.items.email,
+                'gender' :this.items.gender,
+                'dob' :this.items.dob,
+                'nic':this.items.nic,
+                'department':this.items.department,
+                'special':this.items.special,
+                'Gname':this.items.Gname,
+                'GardianType':this.items.GardianType,
+                'add3':this.items.add3,
+                'add4':this.items.add4,
+                'city2':this.items.city2,
+                'Mnumber2':this.items.Mnumber2,
+
+
+                }
+                
+                this.$http.post('http://localhost:8000/api/employees/add', employees).then(function (response) { 
+                    console.log(response);
+                    });
                 swal("Success", "Completed !", "success"); 
             }
         }

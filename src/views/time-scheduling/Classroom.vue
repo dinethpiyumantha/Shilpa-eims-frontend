@@ -25,8 +25,8 @@
                                 <div class="col">
                                     <label for="">Area (Ft & in)</label>
                                     <div class="d-flex">
-                                        <input type="text" v-model.trim="width" class="form-control mr-3" placeholder="Width" aria-label="Last name">
-                                        <input type="text" v-model.trim="length" class="form-control" placeholder="Length" aria-label="Last name">
+                                        <input type="text" v-model.trim="$v.width.$model" :class="{'is-invalid': validationStatus($v.width)}" class="form-control mr-3" placeholder="Width" aria-label="Last name">
+                                        <input type="text" v-model.trim="$v.length.$model" :class="{'is-invalid': validationStatus($v.length)}" class="form-control" placeholder="Length" aria-label="Last name">
                                        
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
 
 
 <script>
-import { required } from 'vuelidate/lib/validators'
+import { required, numeric, decimal } from 'vuelidate/lib/validators'
 import ClassroomUpdate from './ClassroomUpdate'
 
 export default {
@@ -135,7 +135,7 @@ export default {
         'classroom-upadate':ClassroomUpdate
     },
     created() {
-        this.$http.get('http://localhost:8000/api/getallclassrooms')
+        this.$http.get('http://localhost:8000/api/classrooms/getall')
         .then(function (response) {
             // console.log(response);
             this.allItems = response.body.allClassrooms;
@@ -143,14 +143,16 @@ export default {
     },
     validations: {
         classId: {required},
-        capacity: {required}
+        capacity: {required, numeric},
+        width: {decimal},
+        length: {decimal}
     },
     methods: {
         validationStatus: function(validation) {
             return typeof validation != "undefined" ? validation.$error: false;
         },
         getAll: function() {
-            this.$http.get('http://localhost:8000/api/getallclassrooms')
+            this.$http.get('http://localhost:8000/api/classrooms/getall')
             .then(function (response) {
                 // console.log(response);
                 this.allItems = response.body.allClassrooms;

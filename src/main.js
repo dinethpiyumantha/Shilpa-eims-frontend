@@ -18,7 +18,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import Router from './routes/index.js'
 
-import './styles/custom.css';
+import './styles/custom.css'
 
 library.add(faUserSecret)
 

@@ -19,7 +19,7 @@
             <div class="d-flex justify-content-between">
                 
                  <article>{{ notice.body }}</article><br>
-                <img src="C:\Users\Thisara Hetz\Desktop\workshop.jpg"  alt="Generic placeholder image" width="240" height="140">
+                <img v-bind:src="'http://localhost:8000/'+notice.image"  alt="Generic placeholder image" width="240" height="140">
                 
             </div>
             <br>

@@ -36,16 +36,40 @@
         <!-- Three columns of text below the carousel -->
 
         <div class="row">
-        <div v-for="notice in notices" :key="notice.index" class="col-lg-4">
+        <div v-for="notice in notices" :key="notice.index" class="col-lg-3">
           
-            <img class="rounded-square" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            
+            <img v-bind:src="'http://localhost:8000/'+notice.image" class="rounded rounded-square " alt="Generic placeholder image" width="240" height="140">
             <h2>{{notice.heder}}</h2>
-            <p>{{notice.body}}</p>
+            <p>{{notice.body | snippet}}</p>
             <h6>{{notice.created_at}}</h6>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          
+            
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  View details &raquo;
+</button>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel"><h2>{{notice.heder}}</h2></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{notice.body}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
          </div>
         </div><!-- /.row -->
+        
+
+
 
 
 
@@ -111,12 +135,23 @@ export default {
             notices: []
         }
     },
+        filters: {
+        /*'to-uppercase': function(value){
+            return value.toUpperCase();
+        }*/
+        snippet(value){
+            return value.slice(0,100)+'.....';
+        },
+        snippet1(value){
+            return value.slice(0,30);
+        }
+    },
     methods: {
     },
     created() {
         this.$http.get('http://localhost:8000/api/allNotice').then(function(data){
             console.log(data);
-            this.notices = data.body.allNotice.slice(0,3);
+            this.notices = data.body.allNotice.slice(0,4);
         });
     }
 }

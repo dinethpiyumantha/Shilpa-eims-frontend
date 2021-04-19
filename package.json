@@ -17,6 +17,7 @@
     "@fortawesome/vue-fontawesome": "^2.0.2",
     "bootstrap": "^4.6.0",
     "font-awesome": "^4.7.0",
+    "moment": "^2.29.1",
     "sweetalert": "^2.1.2",
     "vue": "^2.5.11",
     "vue-fullscreen": "^2.3.1",

@@ -149,10 +149,9 @@
 
     <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <router-link to="/fee-payment"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Fees</button></router-link>
+        <router-link to="/fee-payment"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Fee Payments</button></router-link>
         <router-link to="/small-expenses"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Small Expenses</button></router-link>
-        <router-link to="/salary"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Salaries</button></router-link>
-        <router-link to="/payment-report"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Report</button></router-link>
+        <router-link to="/payment-report"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Reports</button></router-link>
       </div>
     </div>
   </div>

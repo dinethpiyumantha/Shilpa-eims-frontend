@@ -30,7 +30,6 @@ import ViewExamination from '../views/examination/ViewExamination'
 
 import FeePayment from '../views/finance/FeePayment'
 import PReport from '../views/finance/Report'
-import Salary from '../views/finance/Salary'
 import SmallExpenses from '../views/finance/SmallExpenses'
 
 import Attendance from '../views/attendance/Attendance'
@@ -148,11 +147,6 @@ export default new Router({
           path: '/payment-report',
           name: 'Payment Report',
           component: PReport
-        },
-        {
-          path: '/salary',
-          name: 'Fee Payment',
-          component: Salary
         },
         {
           path: '/small-expenses',

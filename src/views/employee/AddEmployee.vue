@@ -13,7 +13,7 @@
                 <h4> Employee information</h4>
                     <div class="row g-3 align-items-center d-flex flex-row-reverse">
                             <div class="col-auto">
-                                <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" placeholder="EMP1021">
+                                <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" placeholder="EMP1021" readonly>
                             </div>
                             <div class="col-auto">
                                 <label for="inputPassword6" class="col-form-label">EmployeeID</label>
@@ -217,9 +217,12 @@
                      </div>
                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
+
+
                             <div class="my-5 d-flex flex-row-reverse bd-highlight">
                                 <button type="button" @click="clear()"  class="btn btn-primary btn-dark">Clear</button>
                             </div>
+
                             <div class="my-5 d-flex flex-row-reverse bd-highlight">
                                 <button type="submit" class="btn btn-secondary btn-dark">SUBMIT</button>
                               
@@ -321,49 +324,32 @@ export default {
             }
         }
         
-            // submit() {
-            // console.log('submit!')
-            // this.$v.$touch()
-            // if (this.$v.$$pendding || this.$v.$error) {
-            //     this.submitStatus = 'ERROR'
-                
-            // } else {
-            //     // do your submit logic here
-            //     this.submitStatus = 'PENDING'
-            //     setTimeout(() => {
-            //     this.submitStatus = 'OK'
-            //     }, 500)
-            // }
-            // }
-  
+        
      },
        validations: {
         items: {
             nameInitial : {
                 required,
-                        minLength: minLength(10),
-                        maxLength: maxLength(50),
-                        alpha
+                         maxLength: maxLength(50),
+                          
             },
             fullName : {
                 required,
                         maxLength: maxLength(50),
-                        minLength: minLength(10),
-                        alpha
+                        
+                         
 
             },
             address1 : {
                  required,
                         maxLength: maxLength(30),
-                        //minLength: minLength(10),
-                        alphaNum
+                         
 
             },
              address2 : {
                  required,
                         maxLength: maxLength(30),
-                        //minLength: minLength(10),
-                        alphaNum
+                          
 
             },
             city :  {
@@ -405,19 +391,18 @@ export default {
             },
              department :{
                  required, 
-                    maxLength: maxLength(15),
-                    alpha 
+                    maxLength: maxLength(20),
+                    
             },
              special :{
                  required, 
-                    maxLength: maxLength(15),
-                    alpha 
+                    maxLength: maxLength(20),
+                     
             },
              Gname :{
                  required,
-                    minLength: minLength(10),
-                    maxLength: maxLength(50),
-                    alpha 
+                     maxLength: maxLength(50),
+                      
             },
              GardianType :{
                  required, 
@@ -425,14 +410,12 @@ export default {
              add3 :{
                  required, 
                     maxLength: maxLength(30),
-                    //minLength: minLength(10),
-                    alphaNum
+                    
             },
              add4 :{
                  required, 
                     maxLength: maxLength(30),
-                    //minLength: minLength(10),
-                     alphaNum
+                     
             },
              city2 :{
                  required, 

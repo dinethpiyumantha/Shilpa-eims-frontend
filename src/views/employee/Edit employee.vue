@@ -7,7 +7,7 @@
                 <h4> Employee information</h4>
                     <div class="row g-3 align-items-center d-flex flex-row-reverse">
                             <div class="col-auto">
-                                <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" placeholder="EMP1021">
+                                <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" placeholder="EMP1021" readonly>
                             </div>
                             <div class="col-auto">
                                 <label for="inputPassword6" class="col-form-label">EmployeeID</label>

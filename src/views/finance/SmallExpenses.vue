@@ -40,7 +40,7 @@
               </div>
             </div>
             <button type="submit" class="btn btn-primary">
-              <i class="fa fa-plus mr-3" aria-hidden="true"></i>Add Expense
+              <i class="fa" aria-hidden="true"></i>Add
             </button>
             <input
               v-on:click="clearForm"
@@ -201,7 +201,7 @@ export default {
   computed: {
     filterExpense: function() {
         return this.allExpenses.filter((expense)=> {
-            return expense.description.match(this.search);
+            return expense.description.toLowerCase().match(this.search.toLowerCase());
         })
     }
   }

@@ -1,5 +1,4 @@
 <template>
-    <fullscreen ref="fullscreen" @change="fullscreenChange">
     <div class="h-100">
         <!-- <topbar/> -->
         <div class="d-flex dashboad p-0 bg-light">
@@ -7,7 +6,6 @@
             <dash-content/>
         </div>
     </div>
-    </fullscreen>
 </template>
 
 <script>
@@ -27,6 +25,6 @@ export default {
 
 <style scoped>
     .dashboad{
-        height: calc(100vh - 40px);
+        height: calc(100vh);
     }
 </style>

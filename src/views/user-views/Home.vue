@@ -39,7 +39,7 @@
         <div v-for="notice in notices" :key="notice.index" class="col-lg-3">
           
             
-            <img v-bind:src="'http://localhost:8000/'+notice.image" class="rounded-square" alt="Generic placeholder image" width="240" height="140">
+            <img v-bind:src="'http://localhost:8000/'+notice.image" class="rounded rounded-square " alt="Generic placeholder image" width="240" height="140">
             <h2>{{notice.heder}}</h2>
             <p>{{notice.body | snippet}}</p>
             <h6>{{notice.created_at}}</h6>
@@ -141,6 +141,9 @@ export default {
         }*/
         snippet(value){
             return value.slice(0,100)+'.....';
+        },
+        snippet1(value){
+            return value.slice(0,30);
         }
     },
     methods: {

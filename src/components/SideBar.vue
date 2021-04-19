@@ -130,9 +130,9 @@
 
       <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">All Students</button>
-          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add Students</button>
-          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Student Report</button>
+          <router-link to="/notification"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Notice</button></router-link>
+          <router-link to="/controler-notification"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add&Edit notification</button></router-link>
+          <router-link to="/notification-report"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Report</button></router-link>
         </div>
     </div>
   </div>

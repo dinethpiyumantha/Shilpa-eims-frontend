@@ -26,6 +26,7 @@ import Subject from '../views/student/Subject'
 import Examination from '../views/examination/Examination'
 import AddExamination from '../views/examination/AddExamination'
 import EReport from '../views/examination/Report'
+import ViewExamination from '../views/examination/ViewExamination'
 
 import FeePayment from '../views/finance/FeePayment'
 import PReport from '../views/finance/Report'
@@ -126,10 +127,16 @@ export default new Router({
           name: 'Add Examination',
           component: AddExamination
         },
+
         {
           path: '/examination-report',
           name: 'Examination Report',
           component: EReport
+        },
+        {
+          path: '/view-examination',
+          name: 'View Examination',
+          component: ViewExamination
         },
         // Deen
         {

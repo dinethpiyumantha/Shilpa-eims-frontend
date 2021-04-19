@@ -96,9 +96,11 @@
 
       <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <router-link to="/examination"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Examination</button></router-link>
+          <router-link to="/examination"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Results</button></router-link>
           <router-link to="/add-examination"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add Examination</button></router-link>
+          <router-link to="/view-examination"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">View Examination</button></router-link>
           <router-link to="/examination-report"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Report</button></router-link>
+
         </div>
     </div>
   </div>

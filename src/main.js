@@ -11,6 +11,8 @@ Vue.use(vueResource)
 Vue.use(Vuetify)
 
 import 'bootstrap/dist/css/bootstrap.css'
+import swal from 'sweetalert';
+
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
@@ -18,7 +20,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import Router from './routes/index.js'
 
-import './styles/custom.css';
+import './styles/custom.css'
+
 
 library.add(faUserSecret)
 
@@ -32,4 +35,5 @@ new Vue({
   el: '#app',
   router: Router,
   render: h => h(App)
-})
+}
+)

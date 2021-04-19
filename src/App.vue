@@ -8,7 +8,6 @@
 
 <script>
 import Dashboard from './views/Dashboard'
-
 import fullscreen from 'vue-fullscreen'
 import Vue from 'vue'
 Vue.use(fullscreen)

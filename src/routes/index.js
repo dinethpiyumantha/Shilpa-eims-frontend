@@ -26,6 +26,7 @@ import Subject from '../views/student/Subject'
 import Examination from '../views/examination/Examination'
 import AddExamination from '../views/examination/AddExamination'
 import EReport from '../views/examination/Report'
+import ViewExamination from '../views/examination/ViewExamination'
 
 import FeePayment from '../views/finance/FeePayment'
 import PReport from '../views/finance/Report'
@@ -34,6 +35,10 @@ import SmallExpenses from '../views/finance/SmallExpenses'
 import Attendance from '../views/attendance/Attendance'
 import AddAttendance from '../views/attendance/AddAttendance'
 import ATTReport from '../views/attendance/Report'
+
+import Notice from '../views/notice/Notice'
+import NoticeControler from '../views/notice/NoticeControler'
+
 
 export default new Router({
   routes: [
@@ -121,10 +126,16 @@ export default new Router({
           name: 'Add Examination',
           component: AddExamination
         },
+
         {
           path: '/examination-report',
           name: 'Examination Report',
           component: EReport
+        },
+        {
+          path: '/view-examination',
+          name: 'View Examination',
+          component: ViewExamination
         },
         // Deen
         {
@@ -157,6 +168,22 @@ export default new Router({
           path: '/attendance-report',
           name: 'Attendance Report',
           component: ATTReport
+        },
+        // Thisara
+        {
+          path: '/notification',
+          name: 'Notifications',
+          component: Notice
+        },
+        {
+          path: '/controler-notification',
+          name: 'Notifications',
+          component: NoticeControler
+        },
+        {
+          path: '/notification-report',
+          name: 'Notifications',
+          component: Notice
         },
       ]
     },

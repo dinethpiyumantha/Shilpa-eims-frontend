@@ -17,6 +17,12 @@ import AddStudent from '../views/student/AddStudent'
 import SReport from '../views/student/Report'
 import Subject from '../views/student/Subject'
 
+import AddTeacher from '../views/teacher/addTeacher'
+import ListTeacher from '../views/teacher/listTeacher'
+import ReportTeacher from '../views/teacher/reportTeacher'
+import SubjectTeacher from '../views/teacher/subjectTeacher'
+
+
 export default new Router({
   routes: [
     {
@@ -73,6 +79,26 @@ export default new Router({
       path: '/subject',
       name: 'Subject',
       component: Subject
+    },
+    {
+      path: '/add-teacher',
+      name: 'Add Teacher',
+      component: AddTeacher
+    },
+    {
+      path: '/list-teacher',
+      name: 'List Teacher',
+      component: ListTeacher
+    },
+    {
+      path: '/report-teacher',
+      name: 'Report Teacher',
+      component: ReportTeacher
+    },
+    {
+      path: '/subject-teacher',
+      name: 'Subject Teacher',
+      component: SubjectTeacher
     },
   ]
 })

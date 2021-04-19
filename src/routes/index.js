@@ -36,6 +36,10 @@ import Attendance from '../views/attendance/Attendance'
 import AddAttendance from '../views/attendance/AddAttendance'
 import ATTReport from '../views/attendance/Report'
 
+import Notice from '../views/notice/Notice'
+import NoticeControler from '../views/notice/NoticeControler'
+
+
 export default new Router({
   routes: [
     {
@@ -163,6 +167,22 @@ export default new Router({
           path: '/attendance-report',
           name: 'Attendance Report',
           component: ATTReport
+        },
+        // Thisara
+        {
+          path: '/notification',
+          name: 'Notifications',
+          component: Notice
+        },
+        {
+          path: '/controler-notification',
+          name: 'Notifications',
+          component: NoticeControler
+        },
+        {
+          path: '/notification-report',
+          name: 'Notifications',
+          component: Notice
         },
       ]
     },

@@ -26,8 +26,6 @@
                     </div>
                 </div>
 
-
-
                 <div class="d-flex flex-row justify-content-between my-4">
                     <div class="col-4 gap-3">
                         <label for="inputPassword" class="col-form-label lbl-common" >Special Date</label>
@@ -66,10 +64,10 @@
                         <label for="inputPassword" class="col-form-label lbl-common">Teacher</label>
                         <div class="d-flex flex-row gap-2">
                             <select v-model.trim="$v.teacher.$model" :class="{'is-invalid': validationStatus($v.teacher)}" class="form-select" aria-label="Default select example">
-                            <option selected>Select</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                                <option selected>Select</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
                             </select>
                         </div>
                         <div v-if="!$v.teacher.required" class="text-danger"><small>Teacher is required.</small></div>
@@ -91,10 +89,7 @@
                         <label for="inputPassword" class="col-form-label align-middle">Classroom</label>
                         <div class="align-middle">
                             <select v-model.trim="$v.classroom.$model" :class="{'is-invalid': validationStatus($v.classroom)}" class="form-select" aria-label="Default select example">
-                                <option selected>Select</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option v-for="(c, index) in dropdowns.cids" :key="index" value="25">{{c.cid}}</option>
                             </select>
                         </div>
                         <div v-if="!$v.classroom.required" class="text-danger"><small>Classroom is required.</small></div>
@@ -105,7 +100,8 @@
                 <div class="d-flex flex-row justify-content-between my-4">
                     <div class="mb-3 col-12">
                         <label for="exampleFormControlTextarea1" class="form-label">Review</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea v-model.trim="$v.review.$model" :class="{'is-invalid': validationStatus($v.review)}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <small class="text-secondary">{{this.review.length}} /250 Characters</small>
                     </div>
                 </div>
                  
@@ -121,7 +117,8 @@
 </template>
 
 <script>
-import { required } from 'vuelidate/lib/validators'
+import { required, maxLength, alphaNum } from 'vuelidate/lib/validators'
+const dayTypeValidate = () => !((this.dayType == 'special') && (this.date == ''));
 
 export default {
     data: function() {
@@ -134,7 +131,12 @@ export default {
             teacher: '',
             subject: '',
             classroom: '',
-            review: ''
+            review: '',
+            dropdowns: {
+                tids:[],
+                sids:[],
+                cids:[]
+            }
         }
     },
     validations: {
@@ -144,7 +146,8 @@ export default {
         day: {required},
         teacher: {required},
         subject: {required},
-        classroom: {required}
+        classroom: {required},
+        review: {maxLength: maxLength(250)}
     },
     methods: {
         validationStatus: function(validation) {
@@ -152,15 +155,40 @@ export default {
         },
         submit: function() {
             this.$v.$touch();
-            if(this.$v.$pendding || this.$v.$error) return;
-            alert('Data Submited')
+            if(this.$v.$pendding || this.$v.$error) {
+                swal("Rejected","Fill all the required fields correctly !", "error", {
+                    button: "Got It!"
+                }); 
+                return;
+            } else {
+                swal("Sussessfull", " A new time schedule successfully added !", "success");
+            }
         },
         clearForm: function() {
             Object.assign(this.$data, this.$options.data.call(this));
-        }
+        },
+     },
+     created() {
+        //Fill form dropdowns when form created
+        this.$http.get('http://localhost:8000/api/classrooms/getall')
+        .then(function (response) {
+            console.log(response);
+            this.dropdowns.cids = response.body.allClassrooms;
+        });
+     },
+    computed: {
+        dateValidate(val) {
+            switch(val) {
+                case 'normal':
+                    return;
+                case 'special':
+                    return 'required'
+            }
+        },
+        // GET Methods
+        
     }
 }
-
 </script>
 
 

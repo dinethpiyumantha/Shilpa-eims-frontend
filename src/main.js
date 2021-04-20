@@ -11,6 +11,8 @@ Vue.use(vueResource)
 Vue.use(Vuetify)
 
 import 'bootstrap/dist/css/bootstrap.css'
+import swal from 'sweetalert';
+
 
 import Vuelidate from 'vuelidate'
 Vue.use(Vuelidate)
@@ -24,6 +26,7 @@ import Router from './routes/index.js'
 
 import './styles/custom.css'
 
+
 library.add(faUserSecret)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
@@ -36,4 +39,5 @@ new Vue({
   el: '#app',
   router: Router,
   render: h => h(App)
-})
+}
+)

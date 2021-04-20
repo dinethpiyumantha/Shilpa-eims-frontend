@@ -33,16 +33,20 @@ import SubjectTeacher from '../views/teacher/subjectTeacher'
 import Examination from '../views/examination/Examination'
 import AddExamination from '../views/examination/AddExamination'
 import EReport from '../views/examination/Report'
+import ViewExamination from '../views/examination/ViewExamination'
 
 import FeePayment from '../views/finance/FeePayment'
 import PReport from '../views/finance/Report'
-import Salary from '../views/finance/Salary'
 import SmallExpenses from '../views/finance/SmallExpenses'
 
 import Attendance from '../views/attendance/Attendance'
 import AddAttendance from '../views/attendance/AddAttendance'
 import ATTReport from '../views/attendance/Report'
 >>>>>>> 8fa9cf10e2949aee38da7e7558bdf16dc4d68aaa
+
+import Notice from '../views/notice/Notice'
+import NoticeControler from '../views/notice/NoticeControler'
+
 
 export default new Router({
   routes: [
@@ -130,10 +134,16 @@ export default new Router({
           name: 'Add Examination',
           component: AddExamination
         },
+
         {
           path: '/examination-report',
           name: 'Examination Report',
           component: EReport
+        },
+        {
+          path: '/view-examination',
+          name: 'View Examination',
+          component: ViewExamination
         },
         // Deen
         {
@@ -145,11 +155,6 @@ export default new Router({
           path: '/payment-report',
           name: 'Payment Report',
           component: PReport
-        },
-        {
-          path: '/salary',
-          name: 'Fee Payment',
-          component: Salary
         },
         {
           path: '/small-expenses',
@@ -171,6 +176,22 @@ export default new Router({
           path: '/attendance-report',
           name: 'Attendance Report',
           component: ATTReport
+        },
+        // Thisara
+        {
+          path: '/notification',
+          name: 'Notifications',
+          component: Notice
+        },
+        {
+          path: '/controler-notification',
+          name: 'Notifications',
+          component: NoticeControler
+        },
+        {
+          path: '/notification-report',
+          name: 'Notifications',
+          component: Notice
         },
       ]
     },

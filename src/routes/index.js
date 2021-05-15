@@ -179,11 +179,7 @@ export default new Router({
           name: 'Notifications',
           component: NoticeControler
         },
-        {
-          path: '/notification-report',
-          name: 'Notifications',
-          component: Notice
-        },
+    
       ]
     },
     {

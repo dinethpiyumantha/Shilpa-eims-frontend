@@ -22,6 +22,7 @@ import Student from '../views/student/Students'
 import AddStudent from '../views/student/AddStudent'
 import SReport from '../views/student/Report'
 import Subject from '../views/student/Subject'
+import EditStudent from '../views/student/EditStudent'
 
 import Examination from '../views/examination/Examination'
 import AddExamination from '../views/examination/AddExamination'
@@ -79,11 +80,15 @@ export default new Router({
           name: 'Employee Report',
           component: EmpReport
         },
+
+    //LAKSHAN
+
         {
           path: '/student',
           name: 'Student',
           component: Student
         },
+        
         {
           path: '/add-student',
           name: 'Add Student',
@@ -99,6 +104,13 @@ export default new Router({
           name: 'Subject',
           component: Subject
         },
+
+        {
+          path: '/Edit-Student/:id',
+          name: 'EditStudent',
+          component: EditStudent
+        },
+
         // Pawan
         {
           path: '/examination',

@@ -40,7 +40,11 @@
                                 <td>{{student.joinDate}}</td>
                                 <td>{{student.mNumber}}</td>
                                 <td>
+
+                                    <router-link :to="'/Edit-Student/'+student.id">
                                     <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
+                                    </router-link>
+
                                     <button class="btn my-0 py-0" @click="deleteItem(student)"><i class="fa fa-trash"/></button>
                                 </td>
                             </tr>

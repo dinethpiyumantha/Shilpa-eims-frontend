@@ -51,7 +51,7 @@
 
 
 
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus mr-3" aria-hidden="true"></i>Add Sunject</button>                  
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus mr-3" aria-hidden="true"></i>Add Subject</button>                  
                             <input v-on:click="clearForm" type="button" class="btn btn-outline-primary w-auto" value="Clear">
                     </form>
                 </div>
@@ -78,6 +78,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                                <th scope="col">#</th>
                                 <th scope="col">Subject ID</th>
                                 <th scope="col">Subject</th>
                                 <th scope="col">Grade</th>
@@ -86,16 +87,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(item, index) in filterSubjects" :key="index">
-                                <th scope="row">{{ item.cid }}</th>
-                                <td>{{ item.subject }}</td>
-                                <td>{{ item.width }}</td>
-                                <td>{{ item.length }}</td>
-                                <td>{{ item.length * item.width }} Feet <sup>2</sup></td>
-                                <td class="res-row">{{ item.resources }}</td>
+                            <tr v-for="(i, index) in allSubjectMains" :key="index">
+                                <th scope="row">{{ i.id }}</th>
+                                <td>{{ i.subjectID }}</td>
+                                <td>{{ i.subject }}</td>
+                                <td>{{ i.grade }}</td>
+                                
                                 <td>
                                     <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
-                                    <button class="btn my-0 py-0" v-bind:id="index" @click="deleteItem(item)"><i class="fa fa-trash"/></button>
+                                    <button class="btn my-0 py-0" v-bind:id="index" @click="deleteSubjectMain(i)"><i class="fa fa-trash"/></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -114,11 +114,12 @@ export default {
     name: 'Subject',
     data: function() {
         return {
-            subjectID: '',
-            subject: '',
-            grade: '',
-            allItems: [],
-            deleteBtn: false,
+            // subjectID: '',
+            // subject: '',
+            // grade: '',
+
+            allSubjectMains: [],
+           // deleteBtn: false,
             search:''
         }
     },
@@ -127,12 +128,13 @@ export default {
         
     },
     
-    created() {
-        this.$http.get('http://localhost:8000/api/Subjects/getall')
+
+
+     created() {
+        this.$http.get('http://localhost:8000/api/subjetmainget')
         .then(function (response) {
-            
-            // console.log(response);
-            this.allItems = response.body.allSubjects;
+            console.log(response);
+            this.allSubjectMains = response.body.SubjectMain;
         });
     },
 
@@ -147,10 +149,10 @@ export default {
             return typeof validation != "undefined" ? validation.$error: false;
         },
         getAll: function() {
-            this.$http.get('http://localhost:8000/api/Subjects/getall')
+            this.$http.get('http://localhost:8000/api/subjetma')
             .then(function (response) {
                 // console.log(response);
-                this.allItems = response.body.allSubjects;
+                this.allSubjectMains = response.body.allSubjects;
             });
         },
         submit: function() {
@@ -184,8 +186,8 @@ export default {
             Object.assign(this.$data, this.$options.data.call(this));
         },
     
-        deleteItem(item) {
-            console.log(item);
+        deleteSubjectMain(SubjectMain) {
+            console.log(SubjectMain);
             swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover this record!",
@@ -195,12 +197,12 @@ export default {
             })
             .then((willDelete) => {
             if (willDelete) {
-                this.$http.delete("http://localhost:8000/api/deleteSubject/" + item.id).then(
+                this.$http.delete("http://localhost:8000/api/deleteSubject/" + SubjectMain.id).then(
                     function(response) {
                         console.log(response);
                     }
                 );
-                swal(item.cid + " Subject successfully deleted !", {
+                swal(SubjectMain.cid + " Subject successfully deleted !", {
                 icon: "success",
                 });
             }
@@ -209,8 +211,8 @@ export default {
     },
     computed: {
         filterSubjects: function() {
-            return this.allItems.filter((item)=> {
-                return item.cid.match(this.search);
+            return this.allSubjectMains.filter((SubjectMain)=> {
+                return SubjectMain.cid.match(this.search);
             })
         },
         

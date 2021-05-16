@@ -12,6 +12,14 @@ import fullscreen from 'vue-fullscreen'
 import Vue from 'vue'
 Vue.use(fullscreen)
 
+import moment from 'moment';
+
+Vue.filter('formatDate', function(value) {
+    if (value) {
+        return moment(String(value)).format('YYYY/MM/DD')
+    }
+});
+
 export default {
   components : {
     'dashboard' : Dashboard

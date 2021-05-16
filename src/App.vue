@@ -1,32 +1,16 @@
 <template>
   <div id="app">
-    <fullscreen :fullscreen.sync="fullscreen">
-      <router-view/>
-    </fullscreen>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Dashboard from './views/Dashboard'
-import fullscreen from 'vue-fullscreen'
-import Vue from 'vue'
-Vue.use(fullscreen)
+import Dashboard from './views/Dashboard';
 
 export default {
   components : {
     'dashboard' : Dashboard
-  },
-
-    methods: {
-      toggle () {
-        this.fullscreen = !this.fullscreen
-      }
-    },
-    data() {
-      return {
-        fullscreen: false
-      }
-    }
+  }
 }
 </script>
 

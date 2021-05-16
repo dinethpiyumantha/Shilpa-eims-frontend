@@ -1,6 +1,6 @@
 <template>
     
-<div class="accordion col-2 m-0 p-0 bg-white overflow-auto" data-bs-spy="scroll" id="accordionExample">
+<div class="accordion col-2 m-0 p-0 bg-white" data-bs-spy="scroll" id="accordionExample">
   <nav class="navbar navbar-light m-0 p-0 w-100">
     <a class="navbar-brand text-centre  m-0 p-3 w-100" href="#">
       <img :src="require('../assets/logo.png')" height="40" alt="vgjvjhvj"/>
@@ -113,9 +113,9 @@
 
       <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <router-link to="/attendance"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Attendance</button></router-link>
-          <router-link to="/add-attendance"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add Attendance</button></router-link>
-          <router-link to="/attendance-report"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Report</button></router-link>
+          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">All Students</button>
+          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add Students</button>
+          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Student Report</button>
         </div>
     </div>
   </div>
@@ -130,9 +130,9 @@
 
       <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <router-link to="/notification"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Notice</button></router-link>
-          <router-link to="/controler-notification"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add&Edit notification</button></router-link>
-          <router-link to="/notification-report"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Report</button></router-link>
+          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">All Students</button>
+          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add Students</button>
+          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Student Report</button>
         </div>
     </div>
   </div>
@@ -147,10 +147,9 @@
 
     <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <router-link to="/fee-payment"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Fees</button></router-link>
-        <router-link to="/small-expenses"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Small Expenses</button></router-link>
-        <router-link to="/salary"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Salaries</button></router-link>
-        <router-link to="/payment-report"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Report</button></router-link>
+        <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">All Students</button>
+        <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add Students</button>
+        <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Student Report</button>
       </div>
     </div>
   </div>

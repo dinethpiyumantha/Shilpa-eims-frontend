@@ -23,18 +23,26 @@ import AddStudent from '../views/student/AddStudent'
 import SReport from '../views/student/Report'
 import Subject from '../views/student/Subject'
 
+<<<<<<< HEAD
+import AddTeacher from '../views/teacher/addTeacher'
+import ListTeacher from '../views/teacher/listTeacher'
+import ReportTeacher from '../views/teacher/reportTeacher'
+import SubjectTeacher from '../views/teacher/subjectTeacher'
+
+=======
 import Examination from '../views/examination/Examination'
 import AddExamination from '../views/examination/AddExamination'
 import EReport from '../views/examination/Report'
+import ViewExamination from '../views/examination/ViewExamination'
 
 import FeePayment from '../views/finance/FeePayment'
 import PReport from '../views/finance/Report'
-import Salary from '../views/finance/Salary'
 import SmallExpenses from '../views/finance/SmallExpenses'
 
 import Attendance from '../views/attendance/Attendance'
 import AddAttendance from '../views/attendance/AddAttendance'
 import ATTReport from '../views/attendance/Report'
+>>>>>>> 8fa9cf10e2949aee38da7e7558bdf16dc4d68aaa
 
 import Notice from '../views/notice/Notice'
 import NoticeControler from '../views/notice/NoticeControler'
@@ -126,10 +134,16 @@ export default new Router({
           name: 'Add Examination',
           component: AddExamination
         },
+
         {
           path: '/examination-report',
           name: 'Examination Report',
           component: EReport
+        },
+        {
+          path: '/view-examination',
+          name: 'View Examination',
+          component: ViewExamination
         },
         // Deen
         {
@@ -141,11 +155,6 @@ export default new Router({
           path: '/payment-report',
           name: 'Payment Report',
           component: PReport
-        },
-        {
-          path: '/salary',
-          name: 'Fee Payment',
-          component: Salary
         },
         {
           path: '/small-expenses',
@@ -183,9 +192,46 @@ export default new Router({
       ]
     },
     {
+<<<<<<< HEAD
+      path: '/add-student',
+      name: 'Add Student',
+      component: AddStudent
+    },
+    {
+      path: '/student-report',
+      name: 'Student Report',
+      component: SReport
+    },
+    {
+      path: '/subject',
+      name: 'Subject',
+      component: Subject
+    },
+    {
+      path: '/add-teacher',
+      name: 'Add Teacher',
+      component: AddTeacher
+    },
+    {
+      path: '/list-teacher',
+      name: 'List Teacher',
+      component: ListTeacher
+    },
+    {
+      path: '/report-teacher',
+      name: 'Report Teacher',
+      component: ReportTeacher
+    },
+    {
+      path: '/subject-teacher',
+      name: 'Subject Teacher',
+      component: SubjectTeacher
+    },
+=======
       path: '/',
       name: 'User View',
       component: UserHome
     }
+>>>>>>> 8fa9cf10e2949aee38da7e7558bdf16dc4d68aaa
   ]
 })

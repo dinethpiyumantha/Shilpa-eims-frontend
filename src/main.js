@@ -12,6 +12,8 @@ Vue.use(Vuetify)
 
 import 'bootstrap/dist/css/bootstrap.css'
 
+Vue.use(Vuelidate)
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -19,6 +21,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Router from './routes/index.js'
 
 import './styles/custom.css'
+
 
 library.add(faUserSecret)
 

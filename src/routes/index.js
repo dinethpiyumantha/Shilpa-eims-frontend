@@ -38,6 +38,7 @@ import ATTReport from '../views/attendance/Report'
 
 import Notice from '../views/notice/Notice'
 import NoticeControler from '../views/notice/NoticeControler'
+import Report from '../views/notice/Report'
 
 
 export default new Router({
@@ -178,6 +179,11 @@ export default new Router({
           path: '/controler-notification',
           name: 'Notifications',
           component: NoticeControler
+        },
+        {
+          path: '/notification-report',
+          name: 'Notifications',
+          component: Report
         },
     
       ]

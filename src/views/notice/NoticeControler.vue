@@ -12,7 +12,7 @@ import EditNotice from '../notice/EditNotice'
 export default {
     components : {
     'AddNotice' : AddNotice,
-    'EditNotice' : EditNotice
+    'EditNotice' : EditNotice,
   }
     
 }

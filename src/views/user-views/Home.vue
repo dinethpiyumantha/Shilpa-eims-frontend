@@ -36,48 +36,38 @@
         <!-- Three columns of text below the carousel -->
 
         <div class="row">
-        <div v-for="notice in notices" :key="notice.index" class="col-lg-3">
-          
-            
+        <div v-for="(notice,index) in notices" :key="index" class="col-lg-3">
             <img v-bind:src="'http://localhost:8000/'+notice.image" class="rounded rounded-square " alt="Generic placeholder image" width="240" height="140">
-            <h2>{{notice.heder}}</h2>
+            <h2 >{{notice.heder}}</h2>
             <p>{{notice.body | snippet}}</p>
             <h6>{{notice.created_at}}</h6>
+                                            <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"  aria-hidden="true">
+                      <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel"><h2>{{notices[noticesUpdate].heder}}</h2></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <p>{{notices[noticesUpdate].body}}</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
             
                 <!-- Button trigger modal -->
-<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" v-on:click="updateIndex(index)" data-bs-target="#staticBackdrop">
   View details &raquo;
 </button>
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel"><h2>{{notice.heder}}</h2></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>{{notice.body}}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+
          </div>
-        </div><!-- /.row -->
-        
-
-
-
-
-
-    
+        </div><!-- /.row -->   
         <!-- START THE FEATURETTES -->
-
         <hr class="featurette-divider">
-
         <div class="row featurette">
           <div class="col-md-7">
             <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
@@ -87,9 +77,7 @@
             <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
           </div>
         </div>
-
         <hr class="featurette-divider">
-
         <div class="row featurette">
           <div class="col-md-7 order-md-2">
             <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
@@ -99,9 +87,7 @@
             <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
           </div>
         </div>
-
         <hr class="featurette-divider">
-
         <div class="row featurette">
           <div class="col-md-7">
             <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
@@ -111,14 +97,9 @@
             <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
           </div>
         </div>
-
         <hr class="featurette-divider">
-
         <!-- /END THE FEATURETTES -->
-
       </div><!-- /.container -->
-
-
       <!-- FOOTER -->
       <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>
@@ -132,7 +113,8 @@
 export default {
     data () {
         return {
-            notices: []
+            notices: [],
+            noticesUpdate: 0
         }
     },
         filters: {
@@ -147,6 +129,10 @@ export default {
         }
     },
     methods: {
+      updateIndex:function(index){
+        this.noticesUpdate =index;
+      }
+
     },
     created() {
         this.$http.get('http://localhost:8000/api/allNotice').then(function(data){

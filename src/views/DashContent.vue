@@ -32,7 +32,7 @@
 export default {
     data () {
         return {
-            notices: [],
+            //notices: [],
             noticeCount:''
         }
     },
@@ -48,9 +48,18 @@ export default {
     created() {
         this.$http.get('http://localhost:8000/api/allNotice').then(function(data){
             //console.log(data);
-            this.notices = data.body.allNotice;
+            //this.notices = data.body.allNotice;
             this.noticeCount = data.body.allNotice.length;
-            console.log(data.body.allNotice.length);
+            //console.log(data.body.allNotice.length);
+
+        });
+    },
+         updated() {
+        this.$http.get('http://localhost:8000/api/allNotice').then(function(data){
+            //console.log(data);
+            //this.notices = data.body.allNotice;
+            this.noticeCount = data.body.allNotice.length;
+            //console.log(data.body.allNotice.length);
 
         });
     }

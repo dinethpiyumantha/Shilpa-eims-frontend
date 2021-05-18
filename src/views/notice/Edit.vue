@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <div class="card">
-  <div class="card-header">
-    <h3>Add Notice</h3>
-  </div>
-  <form class="card-body" v-on:submit.prevent="submit">
+  <div class="row">
+   
+    <dev class="col-6">
+        <form class="card-body">
     <blockquote class="blockquote mb-0">
       <div class="mb-3">
          <input type="text" v-model.trim="$v.noticeHader.$model" :class="{'is-invalid': validationStatus($v.noticeHader)}" class="form-control" id="exampleFormControlInput1" placeholder="Notification Header">
@@ -14,35 +12,33 @@
          
          <textarea  v-model.trim="$v.noticeBody.$model" :class="{'is-invalid': validationStatus($v.noticeBody)}" class="form-control" id="exampleFormControlTextarea1" placeholder="Notice body" rows="8"></textarea>
          <div v-if="!$v.noticeBody.required" class="invalid-feedback">Body is required.</div>
-         <div class="d-flex justify-content-between gap-5">
-             <input type="Date" v-model.trim="$v.date.$model" class="form-control" placeholder="Date ">
-             
-             <div class="input-group mb-3">
-                 <input type="file" class="form-control" id="inputGroupFile02" @change="getImage($event)">
+                  <div class="d-flex justify-content-between gap-5">
+                     <input type="Date" v-model.trim="$v.date.$model" class="form-control" placeholder="Date ">
+
+                        <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="inputGroupFile02" @change="getImage($event)">
                 
-             </div>
+                   </div>
              
-         </div>
-         <input type="text" class="form-control" v-model.trim="$v.post.$model" placeholder="Post by"><br>
-         <button type="submit" class="btn btn-lg btn-primary">Send Notice <i class="far fa-sticky-note"></i></button>
-        </div>
-    </blockquote>
-  </form>
-</div>
+                   </div>
+                  <input type="text" class="form-control" v-model.trim="$v.post.$model" placeholder="Post by"><br>
+               <button type="submit" class="btn btn-lg btn-primary">Send Notice <i class="far fa-sticky-note"></i></button>
+              </div>
+              </blockquote>
+         </form>
+    </dev>
+    <dev class="col-6">
+    </dev>
   </div>
 </template>
 
 <script>
 import { required, maxLength } from 'vuelidate/lib/validators'
-import Edit from '../notice/EditNotice'
 export default {
-    components : {
-      Edit  
-    },
     name:'notice',
     data() {
+        
         return {
-            isActive: false,
             noticeHader: '',
             noticeBody:'',
             date:'',
@@ -65,7 +61,6 @@ export default {
 
             },
     },
-    
     methods: {
             submit: function() {
                 this.$v.$touch();
@@ -85,10 +80,6 @@ export default {
                     //     'resources': this.arrayToString(this.resources)
                      }
                     
-                    this.$http.post('http://localhost:8000/api/addNotice', notifications).then(function (response) { 
-                        //console.log(response);
-                        this.isActive= response.isActive;
-                     });
 
                     swal("Sussessfull", "Notice successfully added !", "success");
                     this.clearForm();
@@ -109,11 +100,11 @@ export default {
             {
                 this.Image = e.target.result;
             }
-             console.log(this.Image)
+             //console.log(this.Image)
          }
     }
 }
-</script>
+</script>  
 
 <style>
 

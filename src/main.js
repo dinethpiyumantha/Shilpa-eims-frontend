@@ -20,6 +20,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 import swal from 'sweetalert';
 
 
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
+import swal from 'sweetalert';
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'

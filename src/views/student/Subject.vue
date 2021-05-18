@@ -114,9 +114,9 @@ export default {
     name: 'Subject',
     data: function() {
         return {
-            // subjectID: '',
-            // subject: '',
-            // grade: '',
+            subjectID: '',
+            subject: '',
+            grade: '',
 
             allSubjectMains: [],
            // deleteBtn: false,
@@ -174,7 +174,7 @@ export default {
                 }
                 
                 
-                this.$http.post('http://localhost:8000/api/addSubject', Subject).then(function (response) { 
+                this.$http.post('http://localhost:8000/api/subject/add', Subject).then(function (response) { 
                     console.log(response);
                 });
                 swal("Sussessfull", this.subjectID+" Subject successfully added !", "success");
@@ -197,7 +197,7 @@ export default {
             })
             .then((willDelete) => {
             if (willDelete) {
-                this.$http.delete("http://localhost:8000/api/deleteSubject/" + SubjectMain.id).then(
+                this.$http.delete("http://localhost:8000/api/subject/delete/" + SubjectMain.id).then(
                     function(response) {
                         console.log(response);
                     }

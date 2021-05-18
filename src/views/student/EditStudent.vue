@@ -217,6 +217,7 @@ export default {
     data: function() { //data()
         return({
             items: { 
+                id: '',
                 nameInitil: '',
                 nameFull: '',
                 addressL1: '',
@@ -293,7 +294,7 @@ methods: {
                 this.$http.post('http://localhost:8000/api/students/add', student).then(function (response) { 
                     console.log(response);
                 });
-                swal("Success", "Completed !", "success"); 
+                swal("Update Success", "Completed !", "success"); 
             }
 
         }

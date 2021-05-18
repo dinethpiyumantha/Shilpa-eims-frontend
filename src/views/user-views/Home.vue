@@ -1,5 +1,6 @@
 <template>
     <div>
+      
     <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="#">Carousel</a>
@@ -110,6 +111,7 @@
 </template>
 
 <script>
+import DashContentVue from '../DashContent.vue';
 export default {
     data () {
         return {
@@ -117,7 +119,10 @@ export default {
             noticesUpdate: 0
         }
     },
-        filters: {
+    components: {
+      'dash' : DashContentVue
+    },
+    filters: {
         /*'to-uppercase': function(value){
             return value.toUpperCase();
         }*/

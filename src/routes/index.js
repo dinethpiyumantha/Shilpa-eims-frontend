@@ -25,13 +25,11 @@ import AddStudent from '../views/student/AddStudent'
 import SReport from '../views/student/Report'
 import Subject from '../views/student/Subject'
 
-<<<<<<< HEAD
 import AddTeacher from '../views/teacher/addTeacher'
 import ListTeacher from '../views/teacher/listTeacher'
 import ReportTeacher from '../views/teacher/reportTeacher'
 import SubjectTeacher from '../views/teacher/subjectTeacher'
 
-=======
 import Examination from '../views/examination/Examination'
 import AddExamination from '../views/examination/AddExamination'
 import EReport from '../views/examination/Report'
@@ -44,7 +42,6 @@ import SmallExpenses from '../views/finance/SmallExpenses'
 import Attendance from '../views/attendance/Attendance'
 import AddAttendance from '../views/attendance/AddAttendance'
 import ATTReport from '../views/attendance/Report'
->>>>>>> 8fa9cf10e2949aee38da7e7558bdf16dc4d68aaa
 
 import Notice from '../views/notice/Notice'
 import NoticeControler from '../views/notice/NoticeControler'
@@ -204,50 +201,33 @@ export default new Router({
           name: 'Notifications',
           component: NoticeControler
         },
-    
+        // Sandani
+        {
+          path: '/add-teacher',
+          name: 'Add Teacher',
+          component: AddTeacher
+        },
+        {
+          path: '/list-teacher',
+          name: 'List Teacher',
+          component: ListTeacher
+        },
+        {
+          path: '/report-teacher',
+          name: 'Report Teacher',
+          component: ReportTeacher
+        },
+        {
+          path: '/subject-teacher',
+          name: 'Subject Teacher',
+          component: SubjectTeacher
+        },
       ]
     },
     {
-<<<<<<< HEAD
-      path: '/add-student',
-      name: 'Add Student',
-      component: AddStudent
-    },
-    {
-      path: '/student-report',
-      name: 'Student Report',
-      component: SReport
-    },
-    {
-      path: '/subject',
-      name: 'Subject',
-      component: Subject
-    },
-    {
-      path: '/add-teacher',
-      name: 'Add Teacher',
-      component: AddTeacher
-    },
-    {
-      path: '/list-teacher',
-      name: 'List Teacher',
-      component: ListTeacher
-    },
-    {
-      path: '/report-teacher',
-      name: 'Report Teacher',
-      component: ReportTeacher
-    },
-    {
-      path: '/subject-teacher',
-      name: 'Subject Teacher',
-      component: SubjectTeacher
-    },
-=======
       path: '/',
       name: 'User View',
       component: UserHome
     }
->>>>>>> 8fa9cf10e2949aee38da7e7558bdf16dc4d68aaa
   ]
 })

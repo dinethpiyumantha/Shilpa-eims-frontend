@@ -2,13 +2,19 @@ import Vue from 'vue'
 import App from './App.vue'
 import Vuelidate from 'vuelidate'
 
-import Vuetify from 'vuetify'
-import vueResource from 'vue-resource'
-import VueSwal from 'vue-swal'
 
-Vue.use(VueSwal)
+import vueResource from 'vue-resource'
 Vue.use(vueResource)
+
+//Sweet Alart
+import VueSwal from 'vue-swal'
+Vue.use(VueSwal)
+
+//Validation
+import Vuetify from 'vuetify'
 Vue.use(Vuetify)
+
+//Carousal
 
 import 'bootstrap/dist/css/bootstrap.css'
 import swal from 'sweetalert';

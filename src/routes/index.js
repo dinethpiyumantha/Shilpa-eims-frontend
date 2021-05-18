@@ -12,7 +12,9 @@ import Home from '../views/Home'
 import TimeSchedule from '../views/time-scheduling/TimeSchedule'
 import AddTimeSchedule from '../views/time-scheduling/AddTimeSchedule'
 import Classroom from '../views/time-scheduling/Classroom'
+import ClassroomUpdate from '../views/time-scheduling/ClassroomUpdate'
 import TCReport from '../views/time-scheduling/Report'
+import TimeScheduleEdit from '../views/time-scheduling/UpdateTimeSchedule'
 
 import Employee from '../views/employee/Employee'
 import AddEmployee from '../views/employee/AddEmployee'
@@ -61,7 +63,14 @@ export default new Router({
         {
           path: '/schedule',
           name: 'Schedule',
-          component: TimeSchedule
+          component: TimeSchedule,
+          children: [
+            {
+              path: '/schedule/edit/:id',
+              name: 'Schedule Edit',
+              component: TimeScheduleEdit,
+            }
+          ]
         },
         {
           path: '/add-schedule',
@@ -71,7 +80,14 @@ export default new Router({
         {
           path: '/classroom',
           name: 'Classroom',
-          component: Classroom
+          component: Classroom,
+          children: [
+            {
+              path: '/classroom/edit/:id',
+              name: 'Classroom Update',
+              component: ClassroomUpdate
+            }
+          ]
         },
         {
           path: '/time-class-report',

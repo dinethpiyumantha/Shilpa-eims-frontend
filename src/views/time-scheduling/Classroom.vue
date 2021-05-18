@@ -10,6 +10,8 @@
                         Add a Classroom
                     </div>
 
+                    <router-view/>
+
                     <form class="card-body" v-on:submit.prevent="submit">
                             <div class="row mb-3">
                                 <div class="col">
@@ -98,13 +100,28 @@
                                 <td>{{ item.length * item.width }} Feet <sup>2</sup></td>
                                 <td class="res-row">{{ item.resources }}</td>
                                 <td>
-                                    <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
+                                    <router-link :to="'/classroom/edit/'+item.id">
+                                        <button class="btn my-0 py-0" @click="updateItem(item)"><i class="fas fa-edit"/></button>
+                                    </router-link>
                                     <button class="btn my-0 py-0" v-bind:id="index" @click="deleteItem(item)"><i class="fa fa-trash"/></button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+
+        <div class="popup-fade" v-if="showPopup">
+            <classroom-upadate 
+                :classId="updatableItem.classId"
+                :capacity="updatableItem.capacity"
+                :width="updatableItem.width"
+                :length="updatableItem.length"
+                :resources="updatableItem.resources"/>
+
+            <div class="row d-flex justify-content-center">
+                <button type="button" class="btn btn-outline-light m-3 w-auto" style="text-align: center" @click="showPopupWindow()">CLOSE</button>
             </div>
         </div>
     </div>
@@ -128,7 +145,15 @@ export default {
             allItems: [],
             deleteBtn: false,
             search:'',
-            isResEmpty: false
+            isResEmpty: false,
+            showPopup: false,
+            updatableItem: {
+                classId: '',
+                capacity: '',
+                width: '',
+                length: '',
+                resources: []
+            },
         }
     },
     components: {
@@ -228,8 +253,17 @@ export default {
                 swal(item.cid + " classroom successfully deleted !", {
                 icon: "success",
                 });
+                
+                this.allItems.splice((this.allItems.findIndex((e) => e === item)), 1); //Virtualy delete from the array
             }
             });
+        },
+        updateItem(item) {
+            this.updatableItem.classId = item.cid;
+            this.updatableItem.capacity = item.capacity;
+            this.updatableItem.width = item.width;
+            this.updatableItem.length = item.length;
+            this.updatableItem.resources = item.resources;
         }
     },
     computed: {
@@ -241,6 +275,10 @@ export default {
         isResourcesFull: function() {
             this.isResEmpty = this.resources.length>0;
             return this.isResEmpty;
+        },
+        classWidth: function() {
+            var result = (this.length/this.width) * 100;
+            return Math.trunc(result);
         }
     }
 }
@@ -248,6 +286,17 @@ export default {
 
 
 <style scoped>
+.popup-fade{
+    position: fixed;
+    z-index: 999;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    background: #00000066;
+    padding: 50px 200px;
+    transition: 1s;
+}
 .tag{
     width: fit-content;
     padding: 0px 5px 1px 10px;
@@ -268,5 +317,11 @@ export default {
 .res-row{
     max-width: 100px;
     overflow: hidden;
+}
+.popover{
+    width: 300px;
+}
+.class-dummy{
+    transition: 1s;
 }
 </style>

@@ -72,6 +72,7 @@ export default {
                 swal(event.target.id + " Notice successfully deleted !", {
                 icon: "success",
                 });
+
             }
             });
         }

@@ -10,9 +10,11 @@
 
                 </div>
                 <div>
-                    <button type="button" class="btn btn-primary position-relative">
+                    <router-link to="/notification">
+                    <button type="button" :class="isHaveNotices ? 'btn-primary':'btn-secondary'" class="btn btn-sm position-relative">
                     <i class="fas fa-bell"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">{{noticeCount}}<span class="visually-hidden">unread messages</span></span>
                     </button>
+                    </router-link>
                     <!-- <button title="Notifications" class="btn btn-white text-dark"><i class="fas fa-bell"></i></button> -->
                     <button title="Fullscreen" class="btn btn-white text-dark"><i class="fas fa-expand"></i></button>
                     <router-link to="/about"><button title="About Us" class="btn btn-white text-dark"><i class="fa fa-info-circle text-secondary" aria-hidden="true"></i></button></router-link>
@@ -36,8 +38,14 @@ export default {
     },
 
     methods: {
+        
     },
-     created() {
+    computed: {
+        isHaveNotices: function() {
+            return (this.notices.length > 0);
+        }
+    },
+    created() {
         this.$http.get('http://localhost:8000/api/allNotice').then(function(data){
             //console.log(data);
             this.notices = data.body.allNotice;

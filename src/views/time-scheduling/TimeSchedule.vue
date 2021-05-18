@@ -1,5 +1,8 @@
 <template>
     <div>
+         
+        <router-view/>
+
         <div class="card">
             <div class="card-body">
                 <h4>
@@ -61,15 +64,17 @@
                         </thead>
                         <tbody>
                             <tr v-for="(schedule, index) in filterTimeSchedule" :key="index">
-                                <th scope="row">{{schedule.id}}</th>
+                                <th scope="row">{{index+1}}</th>
                                 <td>{{schedule.from + ' - ' + schedule.to}}</td>
-                                <td>{{schedule.tid}}</td>
-                                <td>{{schedule.cid}}</td>
+                                <td>{{schedule.nameInitil}}</td>
+                                <td>{{schedule.classid}}</td>
                                 <td>{{schedule.type}}</td>
                                 <td>{{schedule.day}}</td>
                                 <td>{{schedule.spdate}}</td>
                             <td>
-                                <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
+                                <router-link :to="'/schedule/edit/'+schedule.id">
+                                    <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
+                                </router-link>
                                 <button class="btn my-0 py-0"><i class="fa fa-trash"/></button>
                             </td>
                             </tr>
@@ -99,11 +104,16 @@ export default {
 
     },
     created() {
-        this.$http.get('http://localhost:8000/api/timeschedule/getall')
+        this.$http.get('http://localhost:8000/api/timeschedule/relget')
             .then(function (response) {
                 console.log(response);
                 this.schedules = response.body.allSchedules;
         });
+        // this.$http.get('http://localhost:8000/api/timeschedule/getall')
+        //     .then(function (response) {
+        //         console.log(response);
+        //         this.schedules = response.body.allSchedules;
+        // });
     },
     methods: {
         getAll: function() {

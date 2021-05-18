@@ -190,4 +190,5 @@ i{
 .wid{
   height: 500px;
 }
+
 </style>

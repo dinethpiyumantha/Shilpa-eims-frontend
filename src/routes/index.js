@@ -47,6 +47,7 @@ import updateAttendance from '../views/attendance/updateAttendance'
 
 import Notice from '../views/notice/Notice'
 import NoticeControler from '../views/notice/NoticeControler'
+import Report from '../views/notice/Report'
 
 export default new Router({
   mode: 'history',
@@ -208,6 +209,14 @@ export default new Router({
           name: 'Notifications',
           component: NoticeControler
         },
+        {
+          path: '/notification-report',
+          name: 'Notifications',
+          component: Report
+        },
+    
+      ]
+    },
         // Sandani
         {
           path: '/add-teacher',

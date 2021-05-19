@@ -64,7 +64,7 @@
                         </thead>
                         <tbody>
                             <tr v-for="(schedule, index) in filterTimeSchedule" :key="index">
-                                <th scope="row">{{index+1}}</th>
+                                <th scope="row">{{index+1}} - {{schedule.id}}</th>
                                 <td>{{schedule.from + ' - ' + schedule.to}}</td>
                                 <td>{{schedule.nameInitil}}</td>
                                 <td>{{schedule.classid}}</td>
@@ -75,7 +75,7 @@
                                 <router-link :to="'/schedule/edit/'+schedule.id">
                                     <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
                                 </router-link>
-                                <button class="btn my-0 py-0"><i class="fa fa-trash"/></button>
+                                <button class="btn my-0 py-0" v-bind:id="index" @click="deleteItem(schedule)"><i class="fa fa-trash"/></button>
                             </td>
                             </tr>
                         </tbody>
@@ -104,16 +104,16 @@ export default {
 
     },
     created() {
-        this.$http.get('http://localhost:8000/api/timeschedule/relget')
-            .then(function (response) {
-                console.log(response);
-                this.schedules = response.body.allSchedules;
-        });
-        // this.$http.get('http://localhost:8000/api/timeschedule/getall')
+        // this.$http.get('http://localhost:8000/api/timeschedule/relget')
         //     .then(function (response) {
         //         console.log(response);
         //         this.schedules = response.body.allSchedules;
         // });
+        this.$http.get('http://localhost:8000/api/timeschedule/getall')
+            .then(function (response) {
+                console.log(response);
+                this.schedules = response.body.allSchedules;
+        });
     },
     methods: {
         getAll: function() {
@@ -121,6 +121,30 @@ export default {
             .then(function (response) {
                 console.log(response);
                 this.schedules = response.body.allSchedules;
+            });
+        },
+        deleteItem(item) {
+            console.log(item);
+            swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this record!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                this.$http.delete("http://localhost:8000/api/timeschedule/delete/" + item.id).then(
+                    function(response) {
+                        console.log(response);
+                    }
+                );
+                swal(item.cid + " classroom successfully deleted !", {
+                icon: "success",
+                });
+                
+                // this.allItems.splice((this.allItems.findIndex((e) => e === item)), 1); //Virtualy delete from the array
+            }
             });
         },
     },

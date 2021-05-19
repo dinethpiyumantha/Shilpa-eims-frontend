@@ -201,6 +201,7 @@ export default {
         this.$http.get('http://localhost:8000/api/timeschedule/get/'+this.$route.params.id)
         .then(function (response) {
             console.log(response);
+            console.log("Here Response Dineth");
             this.id = response.body.timeschedule.id,
             this.dayType = response.body.timeschedule.type,
             this.date = response.body.timeschedule.spdate,

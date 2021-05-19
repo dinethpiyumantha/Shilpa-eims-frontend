@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="model-popup">
         <div class="card">
 
             <router-link to="/schedule">
@@ -10,7 +10,7 @@
                 <h4>Create a Time Schedule</h4>
 
                 <div class="mt-4">
-                    <div class="mb-3 col-12 d-flex flex-row gap-5">
+                    <div class="mb-0 col-12 d-flex flex-row gap-5">
                         <div class="form-check">
                             <input class="form-check-input" v-model="dayType" type="radio" value="normal" name="flexRadioDefault" id="flexRadioDefault1">
                             <label class="form-check-label" for="flexRadioDefault1">
@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                <div class="d-flex flex-row justify-content-between my-4">
+                <div class="d-flex flex-row justify-content-between my-2">
                     <div class="col-4 gap-3">
                         <label for="inputPassword" class="col-form-label lbl-common" >Special Date</label>
                         <div class="">
@@ -101,7 +101,7 @@
 
 
                 <div class="d-flex flex-row justify-content-between my-4">
-                    <div class="mb-3 col-12">
+                    <div class="mb-0 col-12">
                         <label for="exampleFormControlTextarea1" class="form-label">Review</label>
                         <textarea v-model.trim="$v.review.$model" :class="{'is-invalid': validationStatus($v.review)}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         <small class="text-secondary">{{this.review.length}} /250 Characters</small>
@@ -126,6 +126,7 @@ const dayTypeValidate = () => !((this.dayType == 'special') && (this.date == '')
 export default {
     data: function() {
         return {
+            id: '',
             dayType:'normal',
             date: '',
             timeFrom: '',
@@ -156,7 +157,6 @@ export default {
         validationStatus: function(validation) {
             return typeof validation != "undefined" ? validation.$error: false;
         },
-
         submit: function() {
             this.$v.$touch();
             if(this.$v.$pendding || this.$v.$error) {
@@ -168,7 +168,7 @@ export default {
             else {
                 const timeschedule = {
                     "type" : this.dayType,
-                    "spdate": (this.dayType=="normal") ? "1111/1/1" : this.date,
+                    "spdate": (this.dayType=="normal") ? "null" : this.date,
                     "from": this.timeFrom,
                     "to" : this.timeTo,
                     "review": (this.review=="") ? "No Review" : this.review,
@@ -178,7 +178,7 @@ export default {
                     "cid": this.classroom
                 }
 
-                this.$http.post('http://localhost:8000/api/timeschedule/add', timeschedule).then(function (response) { 
+                this.$http.put('http://localhost:8000/api/timeschedule/edit/'+this.$route.params.id, timeschedule).then(function (response) { 
                     console.log(response);
                 });
 
@@ -196,6 +196,22 @@ export default {
         .then(function (response) {
             console.log(response);
             this.dropdowns.cids = response.body.allClassrooms;
+        });
+
+        this.$http.get('http://localhost:8000/api/timeschedule/get/'+this.$route.params.id)
+        .then(function (response) {
+            console.log(response);
+            console.log("Here Response Dineth");
+            this.id = response.body.timeschedule.id,
+            this.dayType = response.body.timeschedule.type,
+            this.date = response.body.timeschedule.spdate,
+            this.timeFrom = response.body.timeschedule.from,
+            this.timeTo = response.body.timeschedule.to,
+            this.day = response.body.timeschedule.day,
+            this.teacher = response.body.timeschedule.tid,
+            this.subject = response.body.timeschedule.sid,
+            this.classroom = response.body.timeschedule.classid,
+            this.review = response.body.timeschedule.review
         });
 
      },
@@ -217,8 +233,18 @@ export default {
 
 
 <style scoped>
-
+.model-popup{
+    position: fixed;
+    padding: 50px 150px;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #00000066;
+    z-index: 1000;
+}
 .lbl-common{
     width: 90px;
 }
+
 </style>

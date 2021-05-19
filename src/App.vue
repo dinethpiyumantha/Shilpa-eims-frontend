@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <fullscreen :fullscreen.sync="fullscreen">
+    <!-- <fullscreen :fullscreen.sync="fullscreen"> -->
       <router-view/>
-    </fullscreen>
+    <!-- </fullscreen> -->
   </div>
 </template>
 

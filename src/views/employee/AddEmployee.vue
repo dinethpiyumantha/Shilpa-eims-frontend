@@ -215,16 +215,19 @@
                             </div>
                         </div>
                      </div>
+
+
                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-
-
 
                             <div class="my-5 d-flex flex-row-reverse bd-highlight">
                                 <button type="button" @click="clear()"  class="btn btn-primary btn-dark">Clear</button>
                             </div>
 
                             <div class="my-5 d-flex flex-row-reverse bd-highlight">
+ 
+                                 <!-- <router-link to="employees"> -->
                                 <button type="submit" class="btn btn-secondary btn-dark">SUBMIT</button>
+                               <!-- //  </router-link> -->
                               
                             </div>
                      </div>
@@ -326,7 +329,7 @@ export default {
         
         
      },
-       validations: {
+    validations: {
         items: {
             nameInitial : {
                 required,

@@ -17,6 +17,7 @@ import TCReport from '../views/time-scheduling/Report'
 import Employee from '../views/employee/Employee'
 import AddEmployee from '../views/employee/AddEmployee'
 import EmpReport from '../views/employee/Report'
+import EmpEdit from '../views/employee/EditEmployee'
 
 import Student from '../views/student/Students'
 import AddStudent from '../views/student/AddStudent'
@@ -90,6 +91,13 @@ export default new Router({
           name: 'Employee Report',
           component: EmpReport
         },
+        
+        {
+        path: '/Edit-Employee/:id',
+        name: 'EditEmployee',
+        component: EmpEdit
+      },
+
         // Lakshan
         {
           path: '/student',

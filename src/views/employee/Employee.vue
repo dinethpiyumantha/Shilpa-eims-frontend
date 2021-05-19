@@ -60,7 +60,10 @@
                                 <!-- <td>{{employees.department}}</td>
                                 <td>{{employees.special}}</td> -->
                                 <td>
-                                    <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
+                                    <router-link :to="'/Edit-Employee/'+employees.id ">
+                                            <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
+                                    </router-link>
+
                                     <button class="btn my-0 py-0" @click="deleteItem(employees)"><i class="fa fa-trash"/></button>
                                 </td>
                             </tr>

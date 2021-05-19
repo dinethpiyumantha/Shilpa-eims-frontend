@@ -4,7 +4,13 @@
         <div class="card">
             <div class="card-body">
 
-                <h4> Employee information</h4>
+                  
+                 <router-link to="/employees">
+                    <button class="btn btn-outline-primary mb-3 mt-3"><i class="fa fa-chevron-left mx-2" aria-hidden="true"></i> Back</button>
+                </router-link>
+                
+
+                <h4> Edit Employee Details  </h4>
                     <div class="row g-3 align-items-center d-flex flex-row-reverse">
                             <div class="col-auto">
                                 <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" placeholder="EMP1021" readonly>
@@ -216,7 +222,7 @@
                                 <button type="button" @click="clear()"  class="btn btn-primary btn-dark">Clear</button>
                             </div>
                             <div class="my-5 d-flex flex-row-reverse bd-highlight">
-                                <button type="submit" class="btn btn-secondary btn-dark">SUBMIT</button>
+                                <button type="submit" class="btn btn-secondary btn-dark">Update</button>
                               
                             </div>
                      </div>
@@ -236,6 +242,12 @@
   import { required,minLength, maxLength, sameAs,alpha,alphaNum,numeric,email} from 'vuelidate/lib/validators' //Import Validator 
 
 export default {
+
+    created(){
+
+        this.getData();
+    },
+
     name: 'addEmp',
     data: function() { //data()
         return ({
@@ -263,8 +275,35 @@ export default {
 
             }
         });
+ 
+
     },
+    
      methods: {
+
+         
+        getData(){
+
+             this.$http.get('http://localhost:8000/api/employees/getItem/'+this.$route.params.id)
+             .then(function (Response){
+
+               this.items =Response.body.employees;
+             }) 
+
+            
+        },
+
+        // UpdateInfo(){
+        //         this.$http.put('http://localhost:8000/api/employees/editItem/'+this.$route.params.id,this.employees)
+        //         .then(function (Response){
+
+        //              })
+
+        // },
+
+ 
+ 
+
         clear() {
             Object.assign(this.$data, this.$options.data.call(this));
         },
@@ -282,53 +321,76 @@ export default {
                 // ssreturn;
             }
             else {
-                swal("Success", "Completed !", "success"); 
-            }
-        }
-        
-            // submit() {
-            // console.log('submit!')
-            // this.$v.$touch()
-            // if (this.$v.$$pendding || this.$v.$error) {
-            //     this.submitStatus = 'ERROR'
+
                 
-            // } else {
-            //     // do your submit logic here
-            //     this.submitStatus = 'PENDING'
-            //     setTimeout(() => {
-            //     this.submitStatus = 'OK'
-            //     }, 500)
-            // }
-            // }
+                const employees = {
+
+                'nameInitial':this.items.nameInitial,
+                'fullName':this.items.fullName ,
+                'address1' :this.items.address1 ,
+                'address2' :this.items.address2,
+                'city' :this.items.city,
+                'date' :this.items.date,
+                'Mnumber' :this.items.Mnumber,
+                'Lnumber' :this.items.Lnumber,
+                'email' :this.items.email,
+                'gender' :this.items.gender,
+                'dob' :this.items.dob,
+                'nic':this.items.nic,
+                'department':this.items.department,
+                'special':this.items.special,
+                'Gname':this.items.Gname,
+                'GardianType':this.items.GardianType,
+                'add3':this.items.add3,
+                'add4':this.items.add4,
+                'city2':this.items.city2,
+                'Mnumber2':this.items.Mnumber2,
+                }
+                //console.log(this.$route.params.id);
+                
+              this.$http.put('http://localhost:8000/api/employees/editItem/'+this.$route.params.id, employees)
+             .then(function (Response){
+                  console.log(this.$route.params.id + "Tst param");
+                    });
+            
+                swal("Success", "Completed !", "success"); 
+                this.$router.push({ path: '/employees' })
+            }
+            
+
+        }
+
+
+
+
+
+
   
      },
        validations: {
         items: {
-            nameInitial : {
+           nameInitial : {
                 required,
-                        minLength: minLength(10),
-                        maxLength: maxLength(50),
-                        alpha
+                         maxLength: maxLength(50),
+                          
             },
             fullName : {
                 required,
                         maxLength: maxLength(50),
-                        minLength: minLength(10),
-                        alpha
+                        
+                         
 
             },
             address1 : {
                  required,
                         maxLength: maxLength(30),
-                        //minLength: minLength(10),
-                        alphaNum
+                         
 
             },
              address2 : {
                  required,
                         maxLength: maxLength(30),
-                        //minLength: minLength(10),
-                        alphaNum
+                          
 
             },
             city :  {
@@ -370,19 +432,18 @@ export default {
             },
              department :{
                  required, 
-                    maxLength: maxLength(15),
-                    alpha 
+                    maxLength: maxLength(20),
+                    
             },
              special :{
                  required, 
-                    maxLength: maxLength(15),
-                    alpha 
+                    maxLength: maxLength(20),
+                     
             },
              Gname :{
                  required,
-                    minLength: minLength(10),
-                    maxLength: maxLength(50),
-                    alpha 
+                     maxLength: maxLength(50),
+                      
             },
              GardianType :{
                  required, 
@@ -390,14 +451,12 @@ export default {
              add3 :{
                  required, 
                     maxLength: maxLength(30),
-                    //minLength: minLength(10),
-                    alphaNum
+                    
             },
              add4 :{
                  required, 
                     maxLength: maxLength(30),
-                    //minLength: minLength(10),
-                     alphaNum
+                     
             },
              city2 :{
                  required, 

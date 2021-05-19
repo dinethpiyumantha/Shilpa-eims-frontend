@@ -18,11 +18,8 @@
 export default {
     methods: {
         getReport: function() {
-            this.$http.get('http://localhost:8000/api/timeandclass/report-pdf')
-            .then(function (response) {
-                console.log(response);
-                // this.allItems = response.body.allClassrooms;
-            });
+           
+            window.open("http://localhost:8000/api/student/report-pdf", "_blank");
         }
     }
 }

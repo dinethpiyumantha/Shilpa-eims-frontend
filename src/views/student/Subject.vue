@@ -26,7 +26,7 @@
                                     <label for="">Grade</label>
                                     <div>
                                         <select class="form-select" v-model.trim="$v.grade.$model" :class="{'is-invalid': validationStatus($v.grade)}" aria-label="Default select example">
-                                            <option value="0" selected>Select Grade</option>
+                                            <!-- <option value="0" selected>Select Grade</option> -->
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -41,6 +41,7 @@
                                             <option value="12">12</option>
                                             <option value="13">13</option>
                                             <option value="Courses">Courses</option>
+                                            <option value="Courses">Others</option>
                                         </select>
                                         <div v-if="!$v.grade.required" class="invalid-feedback">Grade is required.</div>
                                     </div>

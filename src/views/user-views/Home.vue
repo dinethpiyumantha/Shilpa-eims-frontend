@@ -1,71 +1,78 @@
 <template>
-    <div>
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Carousel</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-          </ul>
-          <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+    
+<div class="site-wrap">
+
+    
+<header class="site-navbar light js-sticky-header site-navbar-target" role="banner">
+
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-6 col-xl-2">
+            <div class="mb-0 site-logo"><a href="index.html" class="mb-0">Shilpa<span class="text-primary">.</span> </a></div>
+          </div>
+
+          <div class="col-12 col-md-10 d-none d-xl-block">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="http://localhost:8080/#/Admin" class="nav-link">Admin</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3 text-black"></span></a></div>
+
         </div>
-      </nav>
+      </div>
+
     </header>
-
-    <main role="main" class="mt-5 pt-5">
-      <!-- Marketing messaging and featurettes
-      ================================================== -->
-      <!-- Wrap the rest of the page in another container to center all the content. -->
-
-      <div class="">
-
- <!-- /.row --> 
-           <div class="hero-v1">
+        <div class="hero-v1">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 mr-auto text-center text-lg-left">
-            <span class="d-block subheading">Covid-19 Awareness</span>
-            <h1 class="heading mb-3">Stay Safe. Stay Home.</h1>
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel a, nulla incidunt eaque sit praesentium porro consectetur optio!</p>
-           
-
+            <h1 class="heading mb-3">Education.</h1>
+            <p class="mb-5"> “Education is the most powerful weapon which you can use to change the world” – <b>Nelson Mandela</b></p>
+            <p class="right-float"><a href="#bottomSet" class="btn btn-danger">How to prevent covid</a></p>
 
           </div>
           <div class="col-lg-6">
             <figure class="illustration">
-              <img :src="'../src/assets/illustration.png'" alt="Image" class="img-fluid">
+              <img :src="'../src/images/pngwing.com.png'" alt="Image" class="img-fluid">
             </figure>
           </div>
           <div class="col-lg-6"></div>
         </div>
       </div>
     </div>
+    <main role="main" class="mt-5 pt-5">
+      <!-- Marketing messaging and featurettes
+      ================================================== -->
+      <!-- Wrap the rest of the page in another container to center all the content. -->
 
-
-    <!-- MAIN -->
-    
-    <div class="site-section stats">
+      <div class="">
+ <!-- /.row --> 
+    <!-- MAIN -->  
+    <div class="stats">
       <div class="container">
                <!-- Three columns of text below the carousel -->
-
-        <div class="row">
-        <div v-for="(notice,index) in notices" :key="index" class="col-lg-3">
-            <img v-bind:src="'http://localhost:8000/'+notice.image" class="rounded rounded-square " alt="Generic placeholder image" width="240" height="140">
-            <h4>{{notice.heder}}</h4>     
+    <div>Notices</div>
+    <hr/>
+        <div class="row row-cols-1 row-cols-md-3 g-3">
+        
+        <div v-for="(notice,index) in notices" :key="index" class="card-group">
+            <div class="card">
+            <img v-bind:src="'http://localhost:8000/'+notice.image" class="card-img-top " alt="Generic placeholder image" width="240" height="140">
+					<div class="card-footer">
+            <p class="card-text">{{notice.heder}}</p>
+            <div class="time-unite-value">{{ hours }}</div>
+						<small class="text-muted">Last updated <span>{{ notice.date | moment("h:mm:ss") }}</span> ago</small>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" v-on:click="updateIndex(index)" data-bs-target="#staticBackdrop">
+            View details &raquo;
+          </button>
+					</div>
+            </div>   
+             
                                             <!-- Modal -->
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"  aria-hidden="true">
                       <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
@@ -87,16 +94,17 @@
                     </div>
             
                 <!-- Button trigger modal -->
-          <button type="button" class="btn btn-secondary" data-bs-toggle="modal" v-on:click="updateIndex(index)" data-bs-target="#staticBackdrop">
-            View details &raquo;
-          </button>
+          
+
+       
 
          </div>
         </div>
-        <div class="row mb-3">
+        <hr/> 
+        <div class="row mb-3" id="bottomSet">
           <div class="col-lg-7 text-center mx-auto">
             <h2 class="section-heading">Coronavirus dynamic</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, voluptate!</p>
+            <p>Official LIVE updates and the latest news from the Sri Lankan Government on the Coronavirus outbreak, and basic protective measures against the new virus</p>
           </div>
         </div>
         
@@ -122,7 +130,7 @@
           <div class="col-lg-4">
             <div class="data">
               
-              <i class="far fa-virus"></i>
+              
               <strong class="d-block number">{{corona.local_recovered}}</strong>
               <span class="label">Recovered Cases</span>
             </div>
@@ -133,25 +141,86 @@
     
       </div>
       <!-- -->
+      <div class="site-section bg-primary-light">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-7 mx-auto text-center">
+            <h2 class="mb-4 section-heading">Symptoms of Coronavirus</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex officia quas, modi sit eligendi numquam!</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <div class="symptom d-flex">
+              <div class="img">
+                <img :src="'src/images/symptom_high-fever.png'" alt="Image" class="img-fluid">
+              </div>
+              <div class="text">
+                <h3>High Fever</h3>
+                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ipsum repellendus animi modi iure provident, cupiditate perferendis voluptatem!</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-4">
+            <div class="symptom d-flex">
+              <div class="img">
+                <img :src="'src/images/symptom_cough.png'" alt="Image" class="img-fluid">
+              </div>
+              <div class="text">
+                <h3>Cough</h3>
+                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla ullam illo laborum repellendus vel esse dolor, sunt exercitationem.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-4">
+            <div class="symptom d-flex">
+              <div class="img">
+                <img :src="'src/images/symptom_sore-troath.png'" alt="Image" class="img-fluid">
+              </div>
+              <div class="text">
+                <h3>Sore Troath</h3>
+                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse voluptatum, vel inventore at! Ullam, libero reiciendis amet?</p>
+              </div>
+            </div>
+          </div>
 
+          <div class="col-lg-6 mb-4">
+            <div class="symptom d-flex">
+              <div class="img">
+                <img :src="'src/images/symptom_headache.png'" alt="Image" class="img-fluid">
+              </div>
+              <div class="text">
+                <h3>Headache</h3>
+                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem voluptatem ratione veniam rerum qui quibusdam reprehenderit quis.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
       <!-- FOOTER -->
       <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>
         <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-        <i class="fas fa-virus"></i>
+        
+       
       </footer>
     </main>
     </div>
 </template>
 
 <script>
+
+
 export default {
     data () {
         return {
             notices: [],
             noticesUpdate: 0,
             corona: []
+            
         }
     },
         filters: {
@@ -165,12 +234,23 @@ export default {
             return value.slice(0,30);
         }
     },
+    
     methods: {
       updateIndex:function(index){
         this.noticesUpdate =index;
-      }
+      },
+      
 
     },
+      directives : {
+
+    dateshow : function (value){
+        var date=moment(value).fromNow(); // here u modify data 
+        this.el.innerText=date; // and set to the view
+
+    }
+},
+
     created() {
         this.$http.get('http://localhost:8000/api/allNotice').then(function(data){
             //console.log(data);
@@ -180,12 +260,15 @@ export default {
             console.log(data);
             this.corona = data.body.data;
         });
+        
     }
+    
 }
 </script>
 <style>
 /* Blocks */
 /* Base */
+
 body {
   background-color:#ffeaed;
    }
@@ -201,8 +284,7 @@ h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
   font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
 
-.border-2 {
-  border-width: 2px; }
+
 
 .text-black {
   color: #000 !important; }
@@ -760,7 +842,7 @@ h1, h2, h3, h4, h5,
 
 /* Blocks */
 .hero-v1 {
-  padding: 4rem 0 4rem 0;
+  padding: 6rem 0 6rem 0;
   border-bottom-right-radius: 50%;
   background: rgba(111, 66, 193, 0.1);
   overflow: hidden; }
@@ -1269,115 +1351,6 @@ h1, h2, h3, h4, h5,
     background: rgba(111, 66, 193, 0.05);
     color: #6f42c1; }
 
-/* Blog */
-.sidebar-box {
-  margin-bottom: 30px;
-  padding: 25px;
-  font-size: 15px;
-  width: 100%;
-  float: left;
-  background: #fff; }
-  .sidebar-box *:last-child {
-    margin-bottom: 0; }
-  .sidebar-box h3 {
-    font-size: 18px;
-    margin-bottom: 15px; }
 
-.categories li, .sidelink li {
-  position: relative;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px dotted #dee2e6;
-  list-style: none; }
-  .categories li:last-child, .sidelink li:last-child {
-    margin-bottom: 0;
-    border-bottom: none;
-    padding-bottom: 0; }
-  .categories li a, .sidelink li a {
-    display: block; }
-    .categories li a span, .sidelink li a span {
-      position: absolute;
-      right: 0;
-      top: 0;
-      color: #ccc; }
-  .categories li.active a, .sidelink li.active a {
-    color: #000;
-    font-style: italic; }
-
-.comment-form-wrap {
-  clear: both; }
-
-.comment-list {
-  padding: 0;
-  margin: 0; }
-  .comment-list .children {
-    padding: 50px 0 0 40px;
-    margin: 0;
-    float: left;
-    width: 100%; }
-  .comment-list li {
-    padding: 0;
-    margin: 0 0 30px 0;
-    float: left;
-    width: 100%;
-    clear: both;
-    list-style: none; }
-    .comment-list li .vcard {
-      width: 80px;
-      float: left; }
-      .comment-list li .vcard img {
-        width: 50px;
-        border-radius: 50%; }
-    .comment-list li .comment-body {
-      float: right;
-      width: calc(100% - 80px); }
-      .comment-list li .comment-body h3 {
-        font-size: 20px; }
-      .comment-list li .comment-body .meta {
-        text-transform: uppercase;
-        font-size: 13px;
-        letter-spacing: .1em;
-        color: #ccc; }
-      .comment-list li .comment-body .reply {
-        padding: 5px 10px;
-        background: #e6e6e6;
-        color: #000;
-        text-transform: uppercase;
-        font-size: 14px; }
-        .comment-list li .comment-body .reply:hover {
-          color: #000;
-          background: #e3e3e3; }
-
-.search-form {
-  background: #f7f7f7;
-  padding: 10px; }
-  .search-form .form-group {
-    position: relative; }
-    .search-form .form-group input {
-      padding-right: 50px; }
-  .search-form .icon {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%); }
-
-.post-meta {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: .2em; }
-  .post-meta a {
-    color: #fff;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
-
-figure figcaption {
-  margin-top: .5rem;
-  font-style: italic;
-  font-size: .8rem; }
-
-.card-title {
-  font-size: 1.4rem;
-  color: #000; }
 
 </style>

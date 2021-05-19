@@ -73,7 +73,7 @@
                 ></button>
               </div>
               <div class="modal-body">
-                <form class="card-body" v-on:submit.prevent="submit">
+                <form class="card-body" v-on:submit.prevent="submit"  tabindex="-1" aria-labelledby="..." aria-hidden="true">
                   <blockquote class="blockquote mb-0">
                     <div class="mb-3">
                       <input
@@ -135,7 +135,7 @@
                         v-model.trim="$v.post.$model"
                         placeholder="Post by"
                       /><br />
-                      <button type="submit" class="btn btn-lg btn-primary">
+                      <button type="submit" class="btn btn-lg btn-primary" >
                         Update Notice <i class="far fa-sticky-note"></i>
                       </button>
                     </div>
@@ -212,6 +212,7 @@ export default {
         });
         return;
       } else {
+        
         const notifications = {
           heder: this.noticeHader,
           body: this.noticeBody,

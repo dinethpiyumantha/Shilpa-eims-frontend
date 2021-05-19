@@ -27,6 +27,7 @@
                                 <div class="col">
                                     <label for="">Area (Ft & in)</label>
                                     <div class="d-flex">
+
                                         <input type="text" v-model.trim="$v.width.$model" :class="{'is-invalid': validationStatus($v.width)}" class="form-control mr-3" placeholder="Width" aria-label="Last name">
                                         <input type="text" v-model.trim="$v.length.$model" :class="{'is-invalid': validationStatus($v.length)}" class="form-control" placeholder="Length" aria-label="Last name">
                                        
@@ -49,6 +50,7 @@
                                             <small>{{ tag }}</small>
                                             <span @click="removeTag(index)" ><i class="fa fa-times-circle" aria-hidden="true"></i></span>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -100,9 +102,11 @@
                                 <td>{{ item.length * item.width }} Feet <sup>2</sup></td>
                                 <td class="res-row">{{ item.resources }}</td>
                                 <td>
+
                                     <router-link :to="'/classroom/edit/'+item.id">
                                         <button class="btn my-0 py-0" @click="updateItem(item)"><i class="fas fa-edit"/></button>
                                     </router-link>
+
                                     <button class="btn my-0 py-0" v-bind:id="index" @click="deleteItem(item)"><i class="fa fa-trash"/></button>
                                 </td>
                             </tr>
@@ -129,6 +133,7 @@
 
 
 <script>
+
 import { required, numeric, decimal } from 'vuelidate/lib/validators'
 import ClassroomUpdate from './ClassroomUpdate'
 
@@ -179,7 +184,7 @@ export default {
         getAll: function() {
             this.$http.get('http://localhost:8000/api/classrooms/getall')
             .then(function (response) {
-                // console.log(response);
+                console.log(response);
                 this.allItems = response.body.allClassrooms;
             });
         },

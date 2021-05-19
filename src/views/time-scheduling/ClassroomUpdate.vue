@@ -1,4 +1,3 @@
-
 <template>
 <!-- TEST INT -->
     <div class="model-popup">

@@ -43,9 +43,10 @@ import Attendance from '../views/attendance/Attendance'
 import AddAttendance from '../views/attendance/AddAttendance'
 import ATTReport from '../views/attendance/Report'
 
+import updateAttendance from '../views/attendance/updateAttendance'
+
 import Notice from '../views/notice/Notice'
 import NoticeControler from '../views/notice/NoticeControler'
-
 
 export default new Router({
   mode: 'history',
@@ -191,6 +192,11 @@ export default new Router({
           name: 'Attendance Report',
           component: ATTReport
         },
+        {
+          path: '/attendance-update/:id',
+          name: 'Attendance Report',
+          component: updateAttendance
+        }
         // Thisara
         {
           path: '/notification',

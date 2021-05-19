@@ -1,5 +1,6 @@
 <template>
     <div>
+      
     <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="#">Carousel</a>
@@ -34,32 +35,40 @@
       <div class="container marketing">
 
         <!-- Three columns of text below the carousel -->
+
         <div class="row">
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
+        <div v-for="(notice,index) in notices" :key="index" class="col-lg-3">
+            <img v-bind:src="'http://localhost:8000/'+notice.image" class="rounded rounded-square " alt="Generic placeholder image" width="240" height="140">
+            <h2 >{{notice.heder}}</h2>
+            <p>{{notice.body | snippet}}</p>
+            <h6>{{notice.created_at}}</h6>
+                                            <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"  aria-hidden="true">
+                      <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel"><h2>{{notices[noticesUpdate].heder}}</h2></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <p>{{notices[noticesUpdate].body}}</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" v-on:click="updateIndex(index)" data-bs-target="#staticBackdrop">
+  View details &raquo;
+</button>
 
-
+         </div>
+        </div><!-- /.row -->   
         <!-- START THE FEATURETTES -->
-
         <hr class="featurette-divider">
-
         <div class="row featurette">
           <div class="col-md-7">
             <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
@@ -69,9 +78,7 @@
             <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
           </div>
         </div>
-
         <hr class="featurette-divider">
-
         <div class="row featurette">
           <div class="col-md-7 order-md-2">
             <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
@@ -81,9 +88,7 @@
             <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
           </div>
         </div>
-
         <hr class="featurette-divider">
-
         <div class="row featurette">
           <div class="col-md-7">
             <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
@@ -93,14 +98,9 @@
             <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
           </div>
         </div>
-
         <hr class="featurette-divider">
-
         <!-- /END THE FEATURETTES -->
-
       </div><!-- /.container -->
-
-
       <!-- FOOTER -->
       <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>
@@ -109,3 +109,41 @@
     </main>
     </div>
 </template>
+
+<script>
+import DashContentVue from '../DashContent.vue';
+export default {
+    data () {
+        return {
+            notices: [],
+            noticesUpdate: 0
+        }
+    },
+    components: {
+      'dash' : DashContentVue
+    },
+    filters: {
+        /*'to-uppercase': function(value){
+            return value.toUpperCase();
+        }*/
+        snippet(value){
+            return value.slice(0,100)+'.....';
+        },
+        snippet1(value){
+            return value.slice(0,30);
+        }
+    },
+    methods: {
+      updateIndex:function(index){
+        this.noticesUpdate =index;
+      }
+
+    },
+    created() {
+        this.$http.get('http://localhost:8000/api/allNotice').then(function(data){
+            console.log(data);
+            this.notices = data.body.allNotice.slice(0,4);
+        });
+    }
+}
+</script>

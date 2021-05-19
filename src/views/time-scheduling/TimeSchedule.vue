@@ -1,8 +1,15 @@
 <template>
     <div>
+         
+        <router-view/>
+
         <div class="card">
             <div class="card-body">
-                <h4>Time Schedule</h4>
+                <h4>
+                    <span>Time Schedule</span>
+                    <button title="Reload Classrooms" class="btn btn-text my-2 my-sm-0" @click="getAll()"><i class="fa fa-sync-alt"/></button>
+                </h4>
+                
                 
                 <router-link to="/add-schedule">
                     <button class="btn btn-primary mt-3"><i class="fa fa-plus mx-2" aria-hidden="true"></i> Create a Time Schedule</button>
@@ -12,11 +19,15 @@
                     <div class="d-flex flex-row gap-3">
                         <label for="inputPassword" class="col-form-label">Day</label>
                         <div class="d-flex flex-row gap-2 w-100">
-                            <select class="form-select" aria-label="Default select example">
-                            <option selected>Select</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <select v-model="filters.day" class="form-select" aria-label="Default select example">
+                            <option selected>All</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
                             </select>
                         </div>
                     </div>
@@ -24,7 +35,7 @@
                     <div class="d-flex flex-row gap-3">
                         <label for="inputPassword" class="col-form-label">Date</label>
                         <div class="">
-                            <input type="date" class="form-control text-uppercase" id="inputPassword">
+                            <input v-model="filters.date" type="date" class="form-control text-uppercase" id="inputPassword">
                         </div>
                     </div>
 
@@ -52,17 +63,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            <th scope="row">1</th>
-                            <td>10:30 - 12-30</td>
-                            <td>Sahan Herath</td>
-                            <td>A1</td>
-                            <td>Normal</td>
-                            <td>Sunday</td>
-                            <td>12 May 2021</td>
+                            <tr v-for="(schedule, index) in filterTimeSchedule" :key="index">
+                                <th scope="row">{{index+1}} - {{schedule.id}}</th>
+                                <td>{{schedule.from + ' - ' + schedule.to}}</td>
+                                <td>{{schedule.nameInitil}}</td>
+                                <td>{{schedule.classid}}</td>
+                                <td>{{schedule.type}}</td>
+                                <td>{{schedule.day}}</td>
+                                <td>{{schedule.spdate}}</td>
                             <td>
-                                <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
-                                <button class="btn my-0 py-0"><i class="fa fa-trash"/></button>
+                                <router-link :to="'/schedule/edit/'+schedule.id">
+                                    <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
+                                </router-link>
+                                <button class="btn my-0 py-0" v-bind:id="index" @click="deleteItem(schedule)"><i class="fa fa-trash"/></button>
                             </td>
                             </tr>
                         </tbody>
@@ -74,6 +87,79 @@
 </template>
 
 <script>
+import { required } from 'vuelidate/lib/validators'
+
+export default {
+    data() {
+        return {
+            schedules: [],
+            filters: {
+                day:'',
+                date:'',
+                search:''
+            }
+        }
+    },
+    validations: {
+
+    },
+    created() {
+        // this.$http.get('http://localhost:8000/api/timeschedule/relget')
+        //     .then(function (response) {
+        //         console.log(response);
+        //         this.schedules = response.body.allSchedules;
+        // });
+        this.$http.get('http://localhost:8000/api/timeschedule/getall')
+            .then(function (response) {
+                console.log(response);
+                this.schedules = response.body.allSchedules;
+        });
+    },
+    methods: {
+        getAll: function() {
+            this.$http.get('http://localhost:8000/api/timeschedule/getall')
+            .then(function (response) {
+                console.log(response);
+                this.schedules = response.body.allSchedules;
+            });
+        },
+        deleteItem(item) {
+            console.log(item);
+            swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this record!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                this.$http.delete("http://localhost:8000/api/timeschedule/delete/" + item.id).then(
+                    function(response) {
+                        console.log(response);
+                    }
+                );
+                swal(item.cid + " classroom successfully deleted !", {
+                icon: "success",
+                });
+                
+                // this.allItems.splice((this.allItems.findIndex((e) => e === item)), 1); //Virtualy delete from the array
+            }
+            });
+        },
+    },
+    computed: {
+        filterTimeSchedule: function() {
+            if(this.filters.day == 'All') {
+                return this.schedules;
+            } else {
+                return this.schedules.filter((schedule)=> {
+                    return schedule.day.match(this.filters.day);
+                });
+            }
+        },
+    }
+}
 </script>
 
 <style scoped>

@@ -5,19 +5,14 @@
         <div class="card">
             <div class="card-body">
 
-                <h4>Student Information</h4>
-
-                <router-link to="student">
-                    <button class="btn btn-outline-primary mb-3 mt-3"><i class="fa fa-chevron-left mx-2" aria-hidden="true"></i> Back to Student List</button>
-                </router-link>
-
+                <h4>Teacher Information</h4>
                 <form action="" v-on:submit.prevent="submitForm">
                     <div class="row g-3 align-items-center d-flex flex-row-reverse">
                             <div class="col-auto">
-                                <input type="text"  id="stuID" class="form-control" aria-describedby="passwordHelpInline" placeholder="STU0001" readonly>
+                                <input type="text"  id="teacherID" class="form-control" aria-describedby="passwordHelpInline" placeholder="TE0001">
                             </div>
                             <div class="col-auto">
-                                <label for="stuID" class="col-form-label">Student ID</label>
+                                <label for="teacherID" class="col-form-label">TEACHER ID</label>
                             </div>   
                     </div>
 
@@ -80,7 +75,7 @@
                             </div>
                             <div class="col">
                                 <label for="formGroupExampleInput" class="form-label">Land Number</label>
-                                <input type="text" v-model.trim="$v.items.lNumber.$model" class="form-control"  :class="{'is-invalid': validationStatus($v.items.lNumber)}" placeholder=" " aria-label="Last name">
+                                <input type="text" v-model.trim="items.lNumber" class="form-control"  placeholder=" " aria-label="Last name">
                             </div>
                         </div>
                      </div>
@@ -91,15 +86,15 @@
                         <div class="row my-3">
                             <div class="col">
                                 <label for="formGroupExampleInput" class="form-label">E-mail</label>
-                                <input type="text" v-model.trim="$v.items.email.$model" class="form-control" :class="{'is-invalid': validationStatus($v.items.email)}" placeholder=" " aria-label="First name">
+                                <input type="text" v-model.trim="items.email" class="form-control" placeholder=" " aria-label="First name">
                             </div>
                             <div class="col">
                                 <label for="formGroupExampleInput" class="form-label">Gender</label>
                                 <select class="form-select" v-model.trim="$v.items.gender.$model"  aria-label="Default select example">
                                     
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="xxxx">XXXX</option>                           
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">XXXX</option>                           
                                     </select>
                                     <div v-if="!$v.items.gender.required" class="text-danger"><small>Gender is required*</small></div>
                                     
@@ -180,10 +175,12 @@
                      <div class="my-5 d-flex flex-row-reverse bd-highlight">
                          <button  type="button" @click="clear()" class="btn btn-outline-secondary">Clear</button>
                          <button  type="submit" class="btn btn-primary btn-dark">Submit</button>
-                     </div>   
+                        
                          
-                         
+                     </div>
 
+
+        
          
              </div>
 
@@ -202,9 +199,7 @@
 
 
 <script>
-
-import { email, required, minLength, maxLength, numeric } from 'vuelidate/lib/validators' //Import Validator 
-
+import { required, minLength, maxLength } from 'vuelidate/lib/validators' //Import Validator 
 export default {
     name: 'addstu',
     data: function() { //data()
@@ -229,9 +224,7 @@ export default {
                 gMnumber: ''
             },
         });
-
         },
-
 methods: {
         clear() {
             Object.assign(this.$data, this.$options.data.call(this));
@@ -239,7 +232,21 @@ methods: {
         validationStatus: function(validation) {
             return typeof validation != "undefined" ? validation.$error: false;
         },
-        
+        //submitForm() {
+            // if(this.items.nameInitil == '' || this.items.nameFull == '' || this.items.addressL1 == '' || this.items.addressL2 == '' || this.items.city == '' || this.items.joinDate == '' || this.items.mNumber == '' || this.items.gender == '' || this.items.dob == '' || this.items.gName == '' || this.items.gType == '' || this.items.gAddressL1 == '' || this.items.gAddressL2 == '' || this.items.gCity == '' || this.items.gMnumber == '' ) {
+            //     swal("Error", "Fill required fields !", "error");
+            // } else {
+            //     swal("Success", "Completed !", "success");
+            // }
+        //     this.$v.$touch();
+        //     if(this.$v.items.$pendding || this.$v.items.$error) {
+        //         swal("Error", "Fill required fields !", "error");
+        //         return;
+        //     } else {
+        //         swal("Success", "Completed !", "success");
+        //          return;
+        //     }
+        // }
         submitForm: function() {
             this.$v.$touch();
             if(this.$v.items.$pendding || this.$v.items.$error) {
@@ -248,35 +255,9 @@ methods: {
                 });
                 return;
             } else {
-
-                const student = {
-                    'nameInitil':this.items.nameInitil,
-                    'nameFull':this.items.nameFull,
-                    'addressL1':this.items.addressL1,
-                    'addressL2':this.items.addressL2,
-                    'city':this.items.city,
-                    'joinDate':this.items.joinDate,
-                    'mNumber':this.items.mNumber,
-                    'lNumber':this.items.lNumber,
-                    'email':this.items.email,
-                    'gender':this.items.gender,
-                    'dob':this.items.dob,
-                    'gName':this.items.gName,
-                    'gType':this.items.gType,
-                    'gAddressL1':this.items.gAddressL1,
-                    'gAddressL2':this.items.gAddressL2,
-                    'gCity':this.items.gCity,
-                    'gMnumber':this.items.gMnumber
-                }
-
-                this.$http.post('http://localhost:8000/api/students/add', student).then(function (response) { 
-                    console.log(response);
-                });
                 swal("Success", "Completed !", "success"); 
             }
-
         }
-
     },
     validations: {
         items: {
@@ -311,20 +292,8 @@ methods: {
             },
             mNumber: {
                 required,
-                numeric,
                 minLength: minLength(10),
                 maxLength: maxLength(10)
-            },
-
-             lNumber: {
-                required,
-                numeric,
-                minLength: minLength(10),
-                maxLength: maxLength(10)
-            },
-
-            email: {
-                email
             },
             gender: {
                 required,
@@ -357,7 +326,6 @@ methods: {
             },
             gMnumber: {
                 required,
-                numeric,
                 minLength: minLength(10),
                 maxLength: maxLength(10)            
             }
@@ -365,6 +333,4 @@ methods: {
     }
 }
 </script>
-
-
 

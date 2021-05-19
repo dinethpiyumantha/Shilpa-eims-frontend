@@ -2,15 +2,25 @@ import Vue from 'vue'
 import App from './App.vue'
 import Vuelidate from 'vuelidate'
 
-import Vuetify from 'vuetify'
-import vueResource from 'vue-resource'
-import VueSwal from 'vue-swal'
 
-Vue.use(VueSwal)
+import vueResource from 'vue-resource'
 Vue.use(vueResource)
+
+//Sweet Alart
+import VueSwal from 'vue-swal'
+Vue.use(VueSwal)
+
+//Validation
+import Vuetify from 'vuetify'
 Vue.use(Vuetify)
 
+//Carousal
+
 import 'bootstrap/dist/css/bootstrap.css'
+
+
+Vue.use(Vuelidate)
+import swal from 'sweetalert';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
@@ -18,7 +28,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import Router from './routes/index.js'
 
-import './styles/custom.css';
+import './styles/custom.css'
+
 
 library.add(faUserSecret)
 
@@ -32,4 +43,5 @@ new Vue({
   el: '#app',
   router: Router,
   render: h => h(App)
-})
+}
+)

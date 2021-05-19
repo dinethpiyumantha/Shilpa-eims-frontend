@@ -1,6 +1,7 @@
 <template>
   <div>
 
+
     <div class="card" >
             <div class="card-body">
       <h4 style="margin:10px 20px 40px 0px;">Add Attendance</h4>
@@ -59,8 +60,6 @@
 
     
   </div>
-
- 
 </template>
 
 
@@ -135,7 +134,6 @@ export default {
   
   
   }
-
 </script>
 
 

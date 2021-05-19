@@ -7,7 +7,7 @@
 
                 <h4>Student Information Edit</h4>
 
-                <router-link to="student">
+                <router-link to="/student">
                     <button class="btn btn-outline-primary mb-3 mt-3"><i class="fa fa-chevron-left mx-2" aria-hidden="true"></i> Back to Student List</button>
                 </router-link>
 
@@ -177,6 +177,8 @@
                         </div>
                      </div>
 
+                     
+
                      <div class="my-5 d-flex flex-row-reverse bd-highlight">
                          <button  type="button" @click="clear()" class="btn btn-outline-secondary">Clear</button>
                          <button  type="submit" class="btn btn-primary btn-dark">Update</button>
@@ -235,6 +237,7 @@ export default {
                 gAddressL2: '',
                 gCity: '',
                 gMnumber: ''
+                
             },
         });
 
@@ -291,8 +294,17 @@ methods: {
                     'gMnumber':this.items.gMnumber
                 }
 
-                this.$http.post('http://localhost:8000/api/students/add', student).then(function (response) { 
-                    console.log(response);
+
+
+                //  this.$http.put('http://localhost:8000/api/student/update/'+this.$route.params.id, student).then(function (response) { 
+                //     console.log(response);
+
+
+                this.$http.put('http://localhost:8000/api/student/update/'+this.$route.params.id, student) .then(function (Response){
+
+                  console.log(this.$route.params.id + "Tst param");
+
+
                 });
                 swal("Update Success", "Completed !", "success"); 
             }

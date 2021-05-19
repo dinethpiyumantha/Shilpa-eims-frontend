@@ -1,20 +1,20 @@
 <template>
 <!-- TEST INT -->
     <div>
-        <h4>Subject</h4>
+        <h4>Student Subject Page</h4>
         <div class="card">
             <div class="card-body">
                 <div class="card">
                     <div class="card-header">
-                        Add a Subject
+                        Add Student to sunject
                     </div>
 
                     <form class="card-body" v-on:submit.prevent="submit">
                             <div class="row mb-3">
                                 <div class="col">
-                                    <label for="">Subject ID</label>
-                                    <input type="text" v-model.trim="$v.subjectID.$model" :class="{'is-invalid': validationStatus($v.subjectID)}" class="form-control text-uppercase" placeholder="Student ID" aria-label="First name">
-                                    <div v-if="!$v.subjectID.required" class="invalid-feedback">Subject ID is required.</div>
+                                    <label for="">Student ID</label>
+                                    <input type="text" v-model.trim="$v.studentID.$model" :class="{'is-invalid': validationStatus($v.studentID)}" class="form-control text-uppercase" placeholder="Student ID" aria-label="First name">
+                                    <div v-if="!$v.studentID.required" class="invalid-feedback">Subject ID is required.</div>
                                 </div>
                                 <div class="col">
                                     <label for="">Subject </label>
@@ -41,6 +41,7 @@
                                             <option value="12">12</option>
                                             <option value="13">13</option>
                                             <option value="Courses">Courses</option>
+                                            <option value="Other">Others</option>
                                         </select>
                                         <div v-if="!$v.grade.required" class="invalid-feedback">Grade is required.</div>
                                     </div>
@@ -51,7 +52,7 @@
 
 
 
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus mr-3" aria-hidden="true"></i>Add Subject</button>                  
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus mr-3" aria-hidden="true"></i>Add student to Subject</button>                  
                             <input v-on:click="clearForm" type="button" class="btn btn-outline-primary w-auto" value="Clear">
                     </form>
                 </div>
@@ -64,11 +65,11 @@
                 
                 <div class="d-flex flex-row justify-content-between mt-3 mb-4">
                     <h5>
-                        <span>All Subjects</span>
+                        <span>Students with All Subjects</span>
                         <button title="Reload Subject" class="btn btn-text my-2 my-sm-0" @click="getAll()"><i class="fa fa-sync-alt"/></button>
                     </h5>
                     <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" v-model="search" placeholder="Search Subject" aria-label="Search">
+                        <input class="form-control mr-sm-2" type="search" v-model="search" placeholder="Enter Student Number" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                     
@@ -79,7 +80,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Subject ID</th>
+                                <th scope="col">Student ID</th>
                                 <th scope="col">Subject</th>
                                 <th scope="col">Grade</th>
                         
@@ -89,13 +90,13 @@
                         <tbody>
                             <tr v-for="(i, index) in filterSubjects" :key="index">
                                 <th scope="row">{{ i.id }}</th>
-                                <td>{{ i.subjectID }}</td>
+                                <td>{{ i.studentID }}</td>
                                 <td>{{ i.subject }}</td>
                                 <td>{{ i.grade }}</td>
                                 
                                 <td>
                                     <!-- <button class="btn my-0 py-0"><i class="fas fa-edit"/></button> -->
-                                    <button class="btn my-0 py-0" v-bind:id="index" @click="deleteSubjectMain(i)"><i class="fa fa-trash"/></button>
+                                    <button class="btn my-0 py-0" v-bind:id="index" @click="deleteStudentsubjects(i)"><i class="fa fa-trash"/></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -114,11 +115,11 @@ export default {
     name: 'Subject',
     data: function() {
         return {
-            subjectID: '',
+            studentID: '',
             subject: '',
             grade: '',
 
-            allSubjectMains: [],
+            Studentsubjects: [],
            // deleteBtn: false,
             search:''
         }
@@ -131,15 +132,15 @@ export default {
 
 
      created() {
-        this.$http.get('http://localhost:8000/api/subjetmainget')
+        this.$http.get('http://localhost:8000/api/studenntsubjetmainget')
         .then(function (response) {
             console.log(response);
-            this.allSubjectMains = response.body.SubjectMain;
+            this.Studentsubjects = response.body.Studentsubjects;
         });
     },
 
     validations: {
-        subjectID: {required},
+        studentID: {required},
         subject: {required},
         grade: {required}
     },
@@ -152,7 +153,7 @@ export default {
             this.$http.get('http://localhost:8000/api/subjetma')
             .then(function (response) {
                 // console.log(response);
-                this.allSubjectMains = response.body.allSubjects;
+                this.Studentsubjects = response.body.allSubjects;
             });
         },
         submit: function() {
@@ -165,7 +166,7 @@ export default {
             }
             else {
                 const Subject = {
-                    'subjectID': this.subjectID,
+                    'studentID': this.studentID,
                     'subject': this.subject,
                     'grade': this.grade,
                     
@@ -174,10 +175,10 @@ export default {
                 }
                 
                 
-                this.$http.post('http://localhost:8000/api/subject/add', Subject).then(function (response) { 
+                this.$http.post('http://localhost:8000/api/studenntsubject/add', Subject).then(function (response) { 
                     console.log(response);
                 });
-                swal("Sussessfull", this.subjectID+" Subject successfully added !", "success");
+                swal("Sussessfull", this.studentID+" Subject successfully added !", "success");
                 this.clearForm();
                 this.getAll();
             }
@@ -186,8 +187,8 @@ export default {
             Object.assign(this.$data, this.$options.data.call(this));
         },
     
-        deleteSubjectMain(SubjectMain) {
-            console.log(SubjectMain);
+        deleteStudentsubjects(Studentsubjects) {
+            console.log(Studentsubjects);
             swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover this record!",
@@ -197,12 +198,12 @@ export default {
             })
             .then((willDelete) => {
             if (willDelete) {
-                this.$http.delete("http://localhost:8000/api/subject/delete/" + SubjectMain.id).then(
+                this.$http.delete("http://localhost:8000/api/studenntsubject/delete/" + Studentsubjects.id).then(
                     function(response) {
                         console.log(response);
                     }
                 );
-                swal(SubjectMain.cid + " Subject successfully deleted !", {
+                swal(Studentsubjects.cid + " Subject successfully deleted !", {
                 icon: "success",
                 });
             }
@@ -213,8 +214,8 @@ export default {
     //Search
     computed: {
         filterSubjects: function() {
-            return this.allSubjectMains.filter((SubjectMain)=> {
-                return SubjectMain.subjectID.match(this.search) || SubjectMain.subject.match(this.search) || SubjectMain.grade.match(this.search) ;
+            return this.Studentsubjects.filter((Studentsubjects)=> {
+                return Studentsubjects.studentID.match(this.search) || Studentsubjects.subject.match(this.search) || Studentsubjects.grade.match(this.search) ;
             })
         },
         

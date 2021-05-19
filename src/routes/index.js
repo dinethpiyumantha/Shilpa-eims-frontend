@@ -23,6 +23,7 @@ import AddStudent from '../views/student/AddStudent'
 import SReport from '../views/student/Report'
 import Subject from '../views/student/Subject'
 import EditStudent from '../views/student/EditStudent'
+import StudentSubjects from '../views/student/StudentSubjects'
 
 import Examination from '../views/examination/Examination'
 import AddExamination from '../views/examination/AddExamination'
@@ -110,6 +111,15 @@ export default new Router({
           name: 'EditStudent',
           component: EditStudent
         },
+
+        {
+          path: '/StudentSubject',
+          name: 'StudentSubject',
+          component: StudentSubjects
+        },
+
+
+        
 
         // Pawan
         {

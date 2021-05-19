@@ -23,10 +23,11 @@ import AddStudent from '../views/student/AddStudent'
 import SReport from '../views/student/Report'
 import Subject from '../views/student/Subject'
 
-import Examination from '../views/examination/Examination'
+import Result from '../views/examination/Result'
 import AddExamination from '../views/examination/AddExamination'
 import EReport from '../views/examination/Report'
 import ViewExamination from '../views/examination/ViewExamination'
+import EditExamination from '../views/examination/EditExamination' 
 
 import FeePayment from '../views/finance/FeePayment'
 import PReport from '../views/finance/Report'
@@ -110,9 +111,9 @@ export default new Router({
         },
         // Pawan
         {
-          path: '/examination',
-          name: 'Examination',
-          component: Examination
+          path: '/result',
+          name: 'Result',
+          component: Result
         },
         {
           path: '/add-examination',
@@ -125,11 +126,18 @@ export default new Router({
           name: 'Examination Report',
           component: EReport
         },
+        
+        {
+          path: '/editexamination/:id',
+          name: 'editexam',
+          component: EditExamination
+        },
         {
           path: '/view-examination',
           name: 'View Examination',
           component: ViewExamination
         },
+ 
         // Deen
         {
           path: '/fee-payment',

@@ -118,7 +118,7 @@
         </div>
         
                 <!-- <router-link to="/view-examination"> -->
-                <button type="submit" class="btn btn-primary">Submit</button><br/>
+                <button type="submit" class="btn btn-primary">Update</button><br/>
                 <!-- </router-link> -->
                 <input type="button" @click="clear()" value="Clear" class="btn btn-outline-primary mt-2">
                
@@ -133,6 +133,13 @@
 <script>
 import { required, minLength, maxLength, sameAs } from 'vuelidate/lib/validators' //Import Validator
 export default {
+
+created(){
+
+        this.getExamData();
+    },
+
+
 name: 'home',
     data: function() { //data()
         return({
@@ -152,6 +159,18 @@ name: 'home',
         });
     },
     methods: {
+        //Edit function implemantation
+        getExamData(){
+
+             this.$http.get('http://localhost:8000/api/examgetallEdit/getallEdit/'+this.$route.params.id)
+
+             .then(function (Response){
+
+               this.items =Response.body.exams;
+             }) 
+
+        },
+
         clear() {
             Object.assign(this.$data, this.$options.data.call(this));
         },
@@ -171,7 +190,9 @@ name: 'home',
     //         }
     //     }
      //},
-     submitForm() {
+//submit form
+
+ submitForm() {
 
             this.$v.$touch();
 
@@ -189,11 +210,20 @@ name: 'home',
             }
 
             else {
-                
                 swal("Success", "Completed !", "success");
+
+                this.$http.put('http://localhost:8000/api/examUpdate/updateExam/'+this.$route.params.id,this.items)
+
+             .then(function (Response){
+
+                  console.log(this.$route.params.id + "Tst param");
+
+            this.$router.push('/view-examination')
+                    });
+
                 }
 
-                this.$http.post("http://localhost:8000/api/addexam/getexamdata",this.items)
+                //this.$http.post("http://localhost:8000/api/addexam/getexamdata",this.items)
                 
                 
      }

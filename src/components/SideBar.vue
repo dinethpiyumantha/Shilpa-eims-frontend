@@ -113,9 +113,9 @@
 
       <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">All Students</button>
-          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add Students</button>
-          <button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Student Report</button>
+          <router-link to="/attendance"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Attendance</button></router-link>
+          <router-link to="/add-attendance"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add Attendance</button></router-link>
+          <router-link to="/attendance-report"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Report</button></router-link>
         </div>
     </div>
   </div>

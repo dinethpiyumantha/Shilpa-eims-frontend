@@ -32,6 +32,11 @@ import PReport from '../views/finance/Report'
 import Salary from '../views/finance/Salary'
 import SmallExpenses from '../views/finance/SmallExpenses'
 
+import Attendance from '../views/attendance/Attendance'
+import AddAttendance from '../views/attendance/AddAttendance'
+import ATTReport from '../views/attendance/Report'
+import updateAttendance from '../views/attendance/updateAttendance'
+
 export default new Router({
   routes: [
     {
@@ -144,6 +149,27 @@ export default new Router({
           name: 'Small Expenses',
           component: SmallExpenses
         },
+        // Sadisha
+        {
+          path: '/attendance',
+          name: 'Attendance',
+          component: Attendance
+        },
+        {
+          path: '/add-attendance',
+          name: 'Add Attendance',
+          component: AddAttendance
+        },
+        {
+          path: '/attendance-report',
+          name: 'Attendance Report',
+          component: ATTReport
+        },
+        {
+          path: '/attendance-update/:id',
+          name: 'Attendance Report',
+          component: updateAttendance
+        }
       ]
     },
     {

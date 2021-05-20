@@ -9,7 +9,9 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-6 col-xl-2">
-            <div class="mb-0 site-logo"><a href="index.html" class="mb-0">Shilpa<span class="text-primary">.</span> </a></div>
+            <div class="mb-0 site-logo"><a href="index.html" class="mb-0"> <span class="icon text-primary">
+                <img :src="'src/images/logo.png'" alt="Image" class="img-logo">
+              </span></a></div>
           </div>
 
           <div class="col-12 col-md-10 d-none d-xl-block">
@@ -17,7 +19,6 @@
 
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="http://localhost:8080/#/Admin" class="nav-link">Admin</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
               </ul>
             </nav>
@@ -65,8 +66,10 @@
         <div v-for="(notice,index) in notices" :key="index" class="card-group">
             <div class="card">
             <img v-bind:src="'http://localhost:8000/'+notice.image" class="card-img-top " alt="Generic placeholder image" width="240" height="140">
+            <div class="card-body">
+						<h5 class="card-title">{{notice.heder}}</h5>
+					</div>
 					<div class="card-footer">
-            <p class="card-text">{{notice.heder}}</p>
             <div class="time-unite-value">{{ hours }}</div>
 						<small class="text-muted">Last updated <span>{{ notice.date | moment("h:mm:ss") }}</span> ago</small>
             <button type="button" class="btn btn-secondary" data-bs-toggle="modal" v-on:click="updateIndex(index)" data-bs-target="#staticBackdrop">
@@ -106,7 +109,10 @@
         <div class="row mb-3" id="bottomSet">
           <div class="col-lg-7 text-center mx-auto">
             <h2 class="section-heading">Coronavirus dynamic</h2>
-            <p>Official LIVE updates and the latest news from the Sri Lankan Government on the Coronavirus outbreak, and basic protective measures against the new virus</p>
+             <span class="icon text-primary">
+                <img :src="'src/images/klipartz.com.png'" alt="Image" class="img-corona">
+              </span>
+            <p>LIVE updates and the latest news from the Sri Lankan Government on the Coronavirus outbreak, and basic protective measures against the new virus</p>
           </div>
         </div>
         
@@ -114,27 +120,29 @@
           <div class="col-lg-4">
             <div class="data">
               <span class="icon text-primary">
-                <span class="flaticon-virus"></span>
+                <img :src="'src/images/virus-solid.svg'" alt="Image" class="img-corona">
               </span>
-              <strong class="d-block number">{{corona.local_active_cases}}</strong>
-              <span class="label">Active Cases</span>
+              <strong class="d-block number">{{corona.global_new_cases}}</strong>
+              <span class="label">World Active Cases</span>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="data">
               <span class="icon text-primary">
-                <span class="flaticon-virus"></span>
+                <img :src="'src/images/virus-solid.svg'" alt="Image" class="img-corona">
               </span>
-              <strong class="d-block number">{{corona.local_deaths}}</strong>
-              <span class="label">Deaths</span>
+              <strong class="d-block number">{{corona.local_new_deaths}}</strong>
+              <span class="label">Deaths during last 24 hours</span>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="data">
+              <span class="icon text-primary">
+                <img :src="'src/images/virus-solid.svg'" alt="Image" class="img-corona">
+              </span>
               
-              
-              <strong class="d-block number">{{corona.local_recovered}}</strong>
-              <span class="label">Recovered Cases</span>
+              <strong class="d-block number">{{corona.local_new_cases}}</strong>
+              <span class="label">New Cases during last 24 hours</span>
             </div>
           </div>
         </div>
@@ -274,6 +282,15 @@ export default {
 <style>
 /* Blocks */
 /* Base */
+.img-logo{
+  width: 90px;
+  height: 50px;
+}
+
+.img-corona{
+  width: 30px;
+  height: 30px;
+}
 
 body {
   background-color:#ffeaed;

@@ -64,7 +64,7 @@
                         </thead>
                         <tbody>
                             <tr v-for="(schedule, index) in filterTimeSchedule" :key="index">
-                                <th scope="row">{{index+1}} - {{schedule.id}}</th>
+                                <th scope="row">{{index+1}}</th>
                                 <td>{{schedule.from + ' - ' + schedule.to}}</td>
                                 <td>{{schedule.nameInitil}}</td>
                                 <td>{{schedule.classid}}</td>
@@ -109,10 +109,10 @@ export default {
         //         console.log(response);
         //         this.schedules = response.body.allSchedules;
         // });
-        this.$http.get('http://localhost:8000/api/timeschedule/getall')
+        this.$http.get('http://localhost:8000/api/timeschedule/retrive')
             .then(function (response) {
                 console.log(response);
-                this.schedules = response.body.allSchedules;
+                this.schedules = response.body.timeschedules;
         });
     },
     methods: {

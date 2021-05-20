@@ -67,10 +67,7 @@
                         <label for="inputPassword" class="col-form-label lbl-common">Teacher</label>
                         <div class="d-flex flex-row gap-2">
                             <select v-model.trim="$v.teacher.$model" :class="{'is-invalid': validationStatus($v.teacher)}" class="form-select" aria-label="Default select example">
-                                <option selected>Select</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option v-for="(c, index) in dropdowns.tids" :key="index" v-bind="c.id">{{c.nameInitil}}</option>
                             </select>
                         </div>
                         <div v-if="!$v.teacher.required" class="text-danger"><small>Teacher is required.</small></div>
@@ -80,10 +77,7 @@
                         <label for="inputPassword" class="col-form-label">Subject</label>
                         <div class="d-flex flex-row gap-2">
                             <select v-model.trim="$v.subject.$model" :class="{'is-invalid': validationStatus($v.subject)}" class="form-select" aria-label="Default select example">
-                            <option selected>Select</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                                <option v-for="(c, index) in dropdowns.sids" :key="index" v-bind="c.id">{{c.subject}} (Grade {{c.grade}})</option>
                             </select>
                         </div>
                         <div v-if="!$v.subject.required" class="text-danger"><small>Subject is required.</small></div>
@@ -198,6 +192,17 @@ export default {
             this.dropdowns.cids = response.body.allClassrooms;
         });
 
+        this.$http.get('http://localhost:8000/api/subjetmainget')
+        .then(function (response) {
+            console.log(response);
+            this.dropdowns.sids = response.body.SubjectMain;
+        });
+
+        this.$http.get('http://localhost:8000/api/teachers/getall')
+        .then(function (response) {
+            console.log(response);
+            this.dropdowns.tids = response.body.allTeachers;
+        });
      },
     computed: {
         dateValidate(val) {

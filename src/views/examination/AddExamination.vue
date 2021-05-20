@@ -27,7 +27,7 @@
             
             <br>
 
-            <lable>Type of the Examination</lable>
+            <label>Type of the Examination</label>
            <div class="form-check" >
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
                 <label class="form-check-label" for="flexCheckDefault">
@@ -44,15 +44,15 @@
             
                 <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" v-model="items.grade">
                     <option selected>Grade</option>
-                    <option value="1">06</option>
-                    <option value="2">07</option>
-                    <option value="3">08</option>
-                    <option value="3">09</option>
-                    <option value="3">10</option>
-                    <option value="3">11(O/L)</option>
-                    <option value="3">12</option>
-                    <option value="3">13(A/L)</option>
-                    <option value="3">Other</option>
+                    <option value="6">06</option>
+                    <option value="7">07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11(O/L)</option>
+                    <option value="12">12</option>
+                    <option value="13">13(A/L)</option>
+                    <option value="14">Other</option>
                 </select>
 
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" v-model="items.term">
@@ -66,7 +66,7 @@
 
             
                 
-        <lable>Type of the Questions</lable>
+        <label>Type of the Questions</label>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
             <label class="form-check-label" for="flexRadioDefault1">
@@ -93,9 +93,9 @@
         </div>
         
         <br>
-        <lable>Examination Date (Month-Day-Year) & Time</lable>
+        <label>Examination Date (Month-Day-Year) & Time</label>
         <div class="">
-        <input type="date" class="form-control text-uppercase" id="inputPassword" v-model='items.date'>
+            <input type="date" :class="{'is-invalid': validationStatus($v.items.date)}"   class="form-control text-uppercase" id="inputPassword" v-model='items.date'>
         </div>
         <br>
         <div class="row">
@@ -106,7 +106,7 @@
         </div>
         
         <div class="col">
-            <input type="time" class="form-control" v-model.trim="$v.items.end.$model" placeholder="Ending Time" aria-label="Ending Time">
+            <input type="time" :class="{'is-invalid': validationStatus($v.items.end)}"  class="form-control" v-model.trim="$v.items.end.$model" placeholder="Ending Time" aria-label="Ending Time">
         </div>
         </div>                
                         
@@ -191,6 +191,8 @@ name: 'home',
             else {
                 
                 swal("Success", "Completed !", "success");
+                this.$router.push('/view-examination')// link to view page
+                
                 }
 
                 this.$http.post("http://localhost:8000/api/addexam/getexamdata",this.items)

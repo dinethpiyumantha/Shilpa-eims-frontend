@@ -37,11 +37,11 @@
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
                 <label class="form-check-label" for="flexCheckChecked">
-                    Offline Examination (Inclass)
+                    Offline Examination ( Inclass )
                 </label>
             </div>
             <br> 
-            
+        
                 <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" v-model="items.grade">
                     <option selected>Grade</option>
                     <option value="6">06</option>

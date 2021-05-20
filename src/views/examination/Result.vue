@@ -7,7 +7,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Mark</th>
-      <th scope="col">Grade</th>        
+      <th scope="col">Grade </th>        
       <th scope="col">Status</th>  
       <th scope="col">Remarks</th>       
     </tr>

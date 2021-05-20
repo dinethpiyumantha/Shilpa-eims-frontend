@@ -223,7 +223,7 @@ name: 'home',
 
                 }
 
-                //this.$http.post("http://localhost:8000/api/addexam/getexamdata",this.items)
+                //this.$http.post("http://localhost:8000/api/addexam/getexamdata",this.items) //
                 
                 
      }

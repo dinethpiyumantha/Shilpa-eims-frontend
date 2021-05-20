@@ -324,6 +324,7 @@ export default {
                     console.log(response);
                     });
                 swal("Success", "Completed !", "success"); 
+                this.$router.push({ path: '/employees' })
             }
         }
         

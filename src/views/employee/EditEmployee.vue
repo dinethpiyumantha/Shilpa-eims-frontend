@@ -4,13 +4,13 @@
         <div class="card">
             <div class="card-body">
 
-                
-                 <router-link to="employees">
+                  
+                 <router-link to="/employees">
                     <button class="btn btn-outline-primary mb-3 mt-3"><i class="fa fa-chevron-left mx-2" aria-hidden="true"></i> Back</button>
                 </router-link>
+                
 
-
-                <h4> Employee information</h4>
+                <h4> Edit Employee Details  </h4>
                     <div class="row g-3 align-items-center d-flex flex-row-reverse">
                             <div class="col-auto">
                                 <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" placeholder="EMP1021" readonly>
@@ -107,8 +107,9 @@
                                 <label for="formGroupExampleInput" class="form-label">Gender</label>
                                 <select class="form-select"    v-model.trim="$v.items.gender.$model" :class="{'is-invalid': validationStatus($v.items.gender)}" aria-label="Default select example">
                                     <option selected>Open this select menu</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">XXXX</option>
                                     </select>
                                  <div v-if="!$v.items.gender.required" class="text-danger"><small>  Text is required.</small></div> 
 
@@ -170,9 +171,9 @@
                             <label for="formGroupExampleInput2" class="form-label">Gardian's Type</label>
                             <select class="form-select"    v-model.trim="$v.items.GardianType.$model" :class="{'is-invalid': validationStatus($v.items.GardianType)}" aria-label="Default select example">
                                         <option selected>Open this select menu</option>
-                                        <option value="Parent">Parent</option>
-                                        <option value="Brothers">Brothers</option>
-                                        <option value="others">others</option>
+                                        <option value="1">Parent</option>
+                                        <option value="2">Brothers</option>
+                                        <option value="3">others</option>
                                         </select> 
                                          <div v-if="!$v.items.GardianType.required" class="text-danger"><small>  Text is required.</small></div>  
                        
@@ -215,19 +216,13 @@
                             </div>
                         </div>
                      </div>
-
-
                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
                             <div class="my-5 d-flex flex-row-reverse bd-highlight">
                                 <button type="button" @click="clear()"  class="btn btn-primary btn-dark">Clear</button>
                             </div>
-
                             <div class="my-5 d-flex flex-row-reverse bd-highlight">
- 
-                                 <!-- <router-link to="employees"> -->
-                                <button type="submit" class="btn btn-secondary btn-dark">SUBMIT</button>
-                               <!-- //  </router-link> -->
+                                <button type="submit" class="btn btn-secondary btn-dark">Update</button>
                               
                             </div>
                      </div>
@@ -247,6 +242,12 @@
   import { required,minLength, maxLength, sameAs,alpha,alphaNum,numeric,email} from 'vuelidate/lib/validators' //Import Validator 
 
 export default {
+
+    created(){
+
+        this.getData();
+    },
+
     name: 'addEmp',
     data: function() { //data()
         return ({
@@ -274,8 +275,35 @@ export default {
 
             }
         });
+ 
+
     },
+    
      methods: {
+
+         
+        getData(){
+
+             this.$http.get('http://localhost:8000/api/employees/getItem/'+this.$route.params.id)
+             .then(function (Response){
+
+               this.items =Response.body.employees;
+             }) 
+
+            
+        },
+
+        // UpdateInfo(){
+        //         this.$http.put('http://localhost:8000/api/employees/editItem/'+this.$route.params.id,this.employees)
+        //         .then(function (Response){
+
+        //              })
+
+        // },
+
+ 
+ 
+
         clear() {
             Object.assign(this.$data, this.$options.data.call(this));
         },
@@ -294,7 +322,8 @@ export default {
             }
             else {
 
-                const employees ={
+                
+                const employees = {
 
                 'nameInitial':this.items.nameInitial,
                 'fullName':this.items.fullName ,
@@ -316,23 +345,31 @@ export default {
                 'add4':this.items.add4,
                 'city2':this.items.city2,
                 'Mnumber2':this.items.Mnumber2,
-
-
                 }
+                //console.log(this.$route.params.id);
                 
-                this.$http.post('http://localhost:8000/api/employees/add', employees).then(function (response) { 
-                    console.log(response);
+              this.$http.put('http://localhost:8000/api/employees/editItem/'+this.$route.params.id, employees)
+             .then(function (Response){
+                  console.log(this.$route.params.id + "Tst param");
                     });
+            
                 swal("Success", "Completed !", "success"); 
                 this.$router.push({ path: '/employees' })
             }
+            
+
         }
-        
-        
+
+
+
+
+
+
+  
      },
-    validations: {
+       validations: {
         items: {
-            nameInitial : {
+           nameInitial : {
                 required,
                          maxLength: maxLength(50),
                           

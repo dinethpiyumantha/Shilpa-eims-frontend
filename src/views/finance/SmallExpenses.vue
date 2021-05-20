@@ -31,7 +31,7 @@
                   v-model.trim="$v.amount.$model"
                   :class="{ 'is-invalid': validationStatus($v.amount) }"
                   class="form-control"
-                  placeholder="Numbers only*"
+                  placeholder="Numbers only"
                   aria-label="Last name"
                 />
                 <div v-if="!$v.amount.required" class="invalid-feedback">
@@ -39,9 +39,7 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">
-              <i class="fa" aria-hidden="true"></i>Add
-            </button>
+            <button type="submit" class="btn btn-primary">Add</button>
             <input
               v-on:click="clearForm"
               type="button"
@@ -90,7 +88,7 @@
                 <th scope="row">{{ expense.id }}</th>
                 <td>{{ expense.description }}</td>
                 <td>{{ expense.created_at|formatDate}}</td>
-                <td>{{ expense.amount }}</td>
+                <td>{{ expense.amount + ".00" }}</td>
                 <td>
                   <button class="btn my-0 py-0" @click="deleteExpense(expense)"><i class="fa fa-trash"/></button>
                 </td>
@@ -163,7 +161,7 @@ export default {
             console.log(response);
           });
 
-        swal("Sussessfull", " expense successfully added !", "success", {
+        swal("Successfull", " expense successfully added !", "success", {
           button: "Got It!",
         });
         return;

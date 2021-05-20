@@ -16,9 +16,24 @@
                                     <input type="text" v-model.trim="$v.studentID.$model" :class="{'is-invalid': validationStatus($v.studentID)}" class="form-control text-uppercase" placeholder="Student ID" aria-label="First name">
                                     <div v-if="!$v.studentID.required" class="invalid-feedback">Subject ID is required.</div>
                                 </div>
+                                
                                 <div class="col">
                                     <label for="">Subject </label>
-                                    <input type="text" v-model.trim="$v.subject.$model" :class="{'is-invalid': validationStatus($v.subject)}" class="form-control" placeholder="Subject*" aria-label="Last name">
+                                    <select class="form-select" v-model.trim="$v.subject.$model" :class="{'is-invalid': validationStatus($v.subject)}"  aria-label="Last name">
+                                    <option value="0" selected>Select Grade</option>
+                                            <option value="English">English</option>
+                                            <option value="Sinhala">Sinhala</option>
+                                            <option value="Mathes">Mathes</option>
+                                            <option value="Science">Science</option>
+                                            <option value="BS Studies">BS Studies</option>
+                                            <option value="Art">Art</option>
+                                            <option value="Music">Music</option>
+                                            <option value="Account">Account</option>
+                                            <option value="Econ">Econ</option>
+                                            <option value="Political">Political</option>
+                                            <option value="ICT">ICT</option>
+                                            
+                                        </select>
                                     <div v-if="!$v.subject.required" class="invalid-feedback">Subject is required.</div>
                                 </div>
 

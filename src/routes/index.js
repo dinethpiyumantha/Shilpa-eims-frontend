@@ -32,7 +32,6 @@ import ListTeacher from '../views/teacher/listTeacher'
 import ReportTeacher from '../views/teacher/reportTeacher'
 import SubjectTeacher from '../views/teacher/subjectTeacher'
 
-import Examination from '../views/examination/Examination'
 import AddExamination from '../views/examination/AddExamination'
 import EReport from '../views/examination/Report'
 import ViewExamination from '../views/examination/ViewExamination'

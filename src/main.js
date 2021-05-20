@@ -18,9 +18,7 @@ Vue.use(Vuetify)
 
 import 'bootstrap/dist/css/bootstrap.css'
 
-// //
-import vueResource from 'vue-resource' //
-Vue.use(vueResource)
+
 
 
 Vue.use(Vuelidate)

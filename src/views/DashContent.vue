@@ -10,7 +10,9 @@
                 
                 </div>
                 <div>
-                    <button title="Notifications" class="btn btn-white text-dark"><i class="fas fa-bell"></i></button>
+                    <button type="button" class="btn btn-Dark position-relative">
+                    <i class="fas fa-bell"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">{{noticeCount}}<span class="visually-hidden">unread messages</span></span>
+                    </button>
                     <button title="Fullscreen" class="btn btn-white text-dark"><i class="fas fa-expand"></i></button>
                     <router-link to="/about"><button title="About Us" class="btn btn-white text-dark"><i class="fa fa-info-circle text-secondary" aria-hidden="true"></i></button></router-link>
                     <router-link to="/about"><button class="btn btn-white text-dark"><i class="fas fa-ellipsis-v"></i></button></router-link>
@@ -41,9 +43,21 @@
     },
     data() {
       return {
-        fullscreen: false
+        fullscreen: false,
+        noticeCount:''
       }
+    },
+         created() {
+        this.$http.get('http://localhost:8000/api/allNotice').then(function(data){
+            this.noticeCount = data.body.allNotice.length;
+        });
+    },
+         updated() {
+        this.$http.get('http://localhost:8000/api/allNotice').then(function(data){
+            this.noticeCount = data.body.allNotice.length;
+        });
     }
+    
   }
 </script>
 

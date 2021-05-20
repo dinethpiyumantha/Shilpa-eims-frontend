@@ -196,7 +196,7 @@ export default new Router({
           path: '/attendance-update/:id',
           name: 'Attendance Report',
           component: updateAttendance
-        }
+        },
         // Thisara
         {
           path: '/notification',

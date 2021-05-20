@@ -66,8 +66,10 @@
         <div v-for="(notice,index) in notices" :key="index" class="card-group">
             <div class="card">
             <img v-bind:src="'http://localhost:8000/'+notice.image" class="card-img-top " alt="Generic placeholder image" width="240" height="140">
+            <div class="card-body">
+						<h5 class="card-title">{{notice.heder}}</h5>
+					</div>
 					<div class="card-footer">
-            <p class="card-text">{{notice.heder}}</p>
             <div class="time-unite-value">{{ hours }}</div>
 						<small class="text-muted">Last updated <span>{{ notice.date | moment("h:mm:ss") }}</span> ago</small>
             <button type="button" class="btn btn-secondary" data-bs-toggle="modal" v-on:click="updateIndex(index)" data-bs-target="#staticBackdrop">

@@ -248,10 +248,10 @@ export default {
                 icon: "success",
                 });
 
-            }
-            });
-        },
-    },
+            },
+            
+        
+  
  
 
     deleteNote(notice) {

@@ -197,7 +197,7 @@ export default new Router({
           path: '/attendance-update/:id',
           name: 'Attendance Report',
           component: updateAttendance
-        }
+        },
         // Thisara
         {
           path: '/notification',
@@ -214,9 +214,6 @@ export default new Router({
           name: 'Notifications',
           component: Report
         },
-    
-      ]
-    },
         // Sandani
         {
           path: '/add-teacher',

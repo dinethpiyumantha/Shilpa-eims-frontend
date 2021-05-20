@@ -12,7 +12,9 @@ import Home from '../views/Home'
 import TimeSchedule from '../views/time-scheduling/TimeSchedule'
 import AddTimeSchedule from '../views/time-scheduling/AddTimeSchedule'
 import Classroom from '../views/time-scheduling/Classroom'
+import ClassroomUpdate from '../views/time-scheduling/ClassroomUpdate'
 import TCReport from '../views/time-scheduling/Report'
+import TimeScheduleEdit from '../views/time-scheduling/UpdateTimeSchedule'
 
 import Employee from '../views/employee/Employee'
 import AddEmployee from '../views/employee/AddEmployee'
@@ -41,12 +43,14 @@ import Attendance from '../views/attendance/Attendance'
 import AddAttendance from '../views/attendance/AddAttendance'
 import ATTReport from '../views/attendance/Report'
 
+import updateAttendance from '../views/attendance/updateAttendance'
+
 import Notice from '../views/notice/Notice'
 import NoticeControler from '../views/notice/NoticeControler'
 import Report from '../views/notice/Report'
 
-
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/admin',
@@ -67,7 +71,14 @@ export default new Router({
         {
           path: '/schedule',
           name: 'Schedule',
-          component: TimeSchedule
+          component: TimeSchedule,
+          children: [
+            {
+              path: '/schedule/edit/:id',
+              name: 'Schedule Edit',
+              component: TimeScheduleEdit,
+            }
+          ]
         },
         {
           path: '/add-schedule',
@@ -77,7 +88,14 @@ export default new Router({
         {
           path: '/classroom',
           name: 'Classroom',
-          component: Classroom
+          component: Classroom,
+          children: [
+            {
+              path: '/classroom/edit/:id',
+              name: 'Classroom Update',
+              component: ClassroomUpdate
+            }
+          ]
         },
         {
           path: '/time-class-report',
@@ -175,6 +193,11 @@ export default new Router({
           name: 'Attendance Report',
           component: ATTReport
         },
+        {
+          path: '/attendance-update/:id',
+          name: 'Attendance Report',
+          component: updateAttendance
+        }
         // Thisara
         {
           path: '/notification',
@@ -194,41 +217,28 @@ export default new Router({
     
       ]
     },
-    {
-
-      path: '/add-student',
-      name: 'Add Student',
-      component: AddStudent
-    },
-    {
-      path: '/student-report',
-      name: 'Student Report',
-      component: SReport
-    },
-    {
-      path: '/subject',
-      name: 'Subject',
-      component: Subject
-    },
-    {
-      path: '/add-teacher',
-      name: 'Add Teacher',
-      component: AddTeacher
-    },
-    {
-      path: '/list-teacher',
-      name: 'List Teacher',
-      component: ListTeacher
-    },
-    {
-      path: '/report-teacher',
-      name: 'Report Teacher',
-      component: ReportTeacher
-    },
-    {
-      path: '/subject-teacher',
-      name: 'Subject Teacher',
-      component: SubjectTeacher
+        // Sandani
+        {
+          path: '/add-teacher',
+          name: 'Add Teacher',
+          component: AddTeacher
+        },
+        {
+          path: '/list-teacher',
+          name: 'List Teacher',
+          component: ListTeacher
+        },
+        {
+          path: '/report-teacher',
+          name: 'Report Teacher',
+          component: ReportTeacher
+        },
+        {
+          path: '/subject-teacher',
+          name: 'Subject Teacher',
+          component: SubjectTeacher
+        },
+      ]
     },
     {
       path: '/',

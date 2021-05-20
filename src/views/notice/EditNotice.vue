@@ -238,10 +238,19 @@ export default {
 
       filereader.readAsDataURL(e.target.files[0]);
 
+
       filereader.onload = (e) => {
         this.Image = e.target.result;
       };
       //console.log(this.Image);
+                    
+                swal("Notice ID"+notice.id + " Notice successfully deleted !", {
+                icon: "success",
+                });
+
+            }
+            });
+        },
     },
  
 

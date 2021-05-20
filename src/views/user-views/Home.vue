@@ -1,4 +1,5 @@
 <template>
+
     
 <div class="site-wrap">
 
@@ -23,6 +24,7 @@
             </nav>
           </div>
           <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3 text-black"></span></a></div>
+
 
         </div>
       </div>
@@ -219,6 +221,7 @@
 
 <script>
 
+import DashContentVue from '../DashContent.vue';
 
 export default {
     data () {
@@ -229,7 +232,10 @@ export default {
             
         }
     },
-        filters: {
+    components: {
+      'dash' : DashContentVue
+    },
+    filters: {
         /*'to-uppercase': function(value){
             return value.toUpperCase();
         }*/

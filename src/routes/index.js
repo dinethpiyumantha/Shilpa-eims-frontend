@@ -12,11 +12,14 @@ import Home from '../views/Home'
 import TimeSchedule from '../views/time-scheduling/TimeSchedule'
 import AddTimeSchedule from '../views/time-scheduling/AddTimeSchedule'
 import Classroom from '../views/time-scheduling/Classroom'
+import ClassroomUpdate from '../views/time-scheduling/ClassroomUpdate'
 import TCReport from '../views/time-scheduling/Report'
+import TimeScheduleEdit from '../views/time-scheduling/UpdateTimeSchedule'
 
 import Employee from '../views/employee/Employee'
 import AddEmployee from '../views/employee/AddEmployee'
 import EmpReport from '../views/employee/Report'
+import EmpEdit from '../views/employee/EditEmployee'
 
 import Student from '../views/student/Students'
 import AddStudent from '../views/student/AddStudent'
@@ -24,6 +27,12 @@ import SReport from '../views/student/Report'
 import Subject from '../views/student/Subject'
 
 import Result from '../views/examination/Result'
+import AddTeacher from '../views/teacher/addTeacher'
+import ListTeacher from '../views/teacher/listTeacher'
+import ReportTeacher from '../views/teacher/reportTeacher'
+import SubjectTeacher from '../views/teacher/subjectTeacher'
+
+import Examination from '../views/examination/Examination'
 import AddExamination from '../views/examination/AddExamination'
 import EReport from '../views/examination/Report'
 import ViewExamination from '../views/examination/ViewExamination'
@@ -31,10 +40,20 @@ import EditExamination from '../views/examination/EditExamination'
 
 import FeePayment from '../views/finance/FeePayment'
 import PReport from '../views/finance/Report'
-import Salary from '../views/finance/Salary'
 import SmallExpenses from '../views/finance/SmallExpenses'
 
+import Attendance from '../views/attendance/Attendance'
+import AddAttendance from '../views/attendance/AddAttendance'
+import ATTReport from '../views/attendance/Report'
+
+import updateAttendance from '../views/attendance/updateAttendance'
+
+import Notice from '../views/notice/Notice'
+import NoticeControler from '../views/notice/NoticeControler'
+import Report from '../views/notice/Report'
+
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/admin',
@@ -55,7 +74,14 @@ export default new Router({
         {
           path: '/schedule',
           name: 'Schedule',
-          component: TimeSchedule
+          component: TimeSchedule,
+          children: [
+            {
+              path: '/schedule/edit/:id',
+              name: 'Schedule Edit',
+              component: TimeScheduleEdit,
+            }
+          ]
         },
         {
           path: '/add-schedule',
@@ -65,7 +91,14 @@ export default new Router({
         {
           path: '/classroom',
           name: 'Classroom',
-          component: Classroom
+          component: Classroom,
+          children: [
+            {
+              path: '/classroom/edit/:id',
+              name: 'Classroom Update',
+              component: ClassroomUpdate
+            }
+          ]
         },
         {
           path: '/time-class-report',
@@ -88,6 +121,13 @@ export default new Router({
           name: 'Employee Report',
           component: EmpReport
         },
+        
+        {
+        path: '/Edit-Employee/:id',
+        name: 'EditEmployee',
+        component: EmpEdit
+      },
+
         // Lakshan
         {
           path: '/student',
@@ -150,14 +190,67 @@ export default new Router({
           component: PReport
         },
         {
-          path: '/salary',
-          name: 'Fee Payment',
-          component: Salary
-        },
-        {
           path: '/small-expenses',
           name: 'Small Expenses',
           component: SmallExpenses
+        },
+        // Sadisha
+        {
+          path: '/attendance',
+          name: 'Attendance',
+          component: Attendance
+        },
+        {
+          path: '/add-attendance',
+          name: 'Add Attendance',
+          component: AddAttendance
+        },
+        {
+          path: '/attendance-report',
+          name: 'Attendance Report',
+          component: ATTReport
+        },
+        {
+          path: '/attendance-update/:id',
+          name: 'Attendance Report',
+          component: updateAttendance
+        },
+        // Thisara
+        {
+          path: '/notification',
+          name: 'Notifications',
+          component: Notice
+        },
+        {
+          path: '/controler-notification',
+          name: 'Notifications',
+          component: NoticeControler
+        },
+        {
+          path: '/notification-report',
+          name: 'Notifications',
+          component: Report
+        },
+        // Sandani
+        {
+          path: '/add-teacher',
+          name: 'Add Teacher',
+          component: AddTeacher
+        },
+        {
+          path: '/list-teacher',
+          name: 'List Teacher',
+          component: ListTeacher
+        },
+        {
+          path: '/report-teacher',
+          name: 'Report Teacher',
+          component: ReportTeacher
+        },
+        {
+          path: '/subject-teacher',
+          name: 'Subject Teacher',
+          component: SubjectTeacher
         },
       ]
     },

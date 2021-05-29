@@ -136,6 +136,7 @@ export default {
             }
         }
     },
+    //vuelidate library
     validations: {
         date: {},
         timeFrom: {required},

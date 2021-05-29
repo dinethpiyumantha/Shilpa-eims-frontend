@@ -19,6 +19,8 @@ Vue.use(Vuetify)
 import 'bootstrap/dist/css/bootstrap.css'
 
 
+
+
 Vue.use(Vuelidate)
 
 import { library } from '@fortawesome/fontawesome-svg-core'

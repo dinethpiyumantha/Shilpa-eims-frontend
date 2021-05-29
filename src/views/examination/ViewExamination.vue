@@ -1,81 +1,59 @@
 <template>
-  <div>
+    <div>
         <div class="card">
             <div class="card-body">
-                <h4>View Examination</h4>
+                <h4>View Examination Details </h4>
 
-                <div class="d-flex flex-row-reverse gap-5 mt-5 mb-4 justify-content-between">
+                <router-link to="/add-examination">
+                    <button class="btn btn-primary mt-3"><i class="fa fa-plus mx-2" aria-hidden="true"></i> Add new exams</button>
+                </router-link>
+
+                <div class="mt-3">
                     <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <input v-model="search" class="form-control w-75 p-3 mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
-
-
-<!-- Time scheduling view tporpose-->
+                
+                
                 <div class="mt-3">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                            <th scope="col">ExamID</th>
-                            <th scope="col">ExamName</th>
-                            <th scope="col">Subject</th>
-                            <th scope="col">Type</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Exam Name</th>
+                            <th scope="col">Exam ID </th>
+                            <th scope="col"> SUB</th>
                             <th scope="col">Grade</th>
-                            <th scope="col">Term</th>
+                            <th scope="col"> Term</th>
                             <th scope="col">Date</th>
                             <th scope="col">Start</th>
-                            <th scope="col">End</th>
+                            <!-- <th scope="col">End</th>
+                            <th scope="col">Note</th> -->
+
                             <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            
-                            <td>EX001</td>
-                            <td>Sinhala Grade 6 Second Term</td>
-                            <td>Sinhala </td>
-                            <td>Online</td>
-                            <td>6</td>
-                            <td>Second Term</td>
-                            <td>24-04-2021</td>
-                            <td>08.30</td>
-                            <td>10.30</td>
+                            <tr v-for="(exams, index) in filterexams" :key="index">
+                                <th scope="row">{{exams.id}}</th>
+                                <td>{{exams.examName}}</td>
+                                <td>{{exams.examId}}</td>
+                                <td>{{exams.subject}}</td>
+                                <td>{{exams.grade}}</td>
+                                <td>{{exams.term}}</td>
+                                <td>{{exams.date}}</td>
+                                <td>{{exams.start}}</td>
+                                
+                                <td>
+
+                                    <router-link :to="'/editexamination/'+exams.id">
+                                    <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
+                                    </router-link>
+
+                                    <button class="btn my-0 py-0" @click="deleteItem(exams)"><i class="fa fa-trash"/></button>
+                                </td>
                             </tr>
-
-                                <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
-                                <button class="btn my-0 py-0"><i class="fa fa-trash"/></button>
-                            
-                            <tr>
-                            
-                            <td>EX002</td>
-                            <td>English Grade 10 Second Term</td>
-                            <td>English</td>
-                            <td>Offline</td>
-                            <td>8</td>
-                            <td>Second Term</td>
-                            <td>04-04-2021</td>
-                            <td>11.30</td>
-                            <td>12.30</td>
-                            </tr>
-
-                                <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
-                                <button class="btn my-0 py-0"><i class="fa fa-trash"/></button>
-                            <tr>
-                            <td>EX003</td>
-                            <td>History Grade 9 Third Term</td>
-                            <td>History</td>
-                            <td>Offline</td>
-                            <td>9</td>
-                            <td>Third Term</td>
-                            <td>02-04-2021</td>
-                            <td>02.30</td>
-                            <td>05.30</td>
-                            </tr>
-
-                                <button class="btn my-0 py-0"><i class="fas fa-edit"/></button>
-                                <button class="btn my-0 py-0"><i class="fa fa-trash"/></button>    
-
                         </tbody>
                     </table>
                 </div>
@@ -85,11 +63,56 @@
 </template>
 
 <script>
+//
 export default {
-
+    data() {
+        return {
+            allexams: [],
+            search: ''
+        }
+    },
+    created() {
+        this.$http.get('http://localhost:8000/api/examgetall/getall')
+        .then(function (response) {
+            console.log(response);
+            this.allexams = response.body.exams;
+        });
+    },
+    //Delete
+    methods: {
+        deleteItem(exams) {
+            console.log(exams);
+            swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this record!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                this.$http.delete("http://localhost:8000/api/deleteexams/" + exams.id).then(
+                    function(response) {
+                        console.log(response);
+                    }
+                );
+                swal(exams.id + " Data successfully deleted !", {
+                icon: "success",
+                });
+            }
+            });
+        }
+    },
+//Search
+    computed: {
+        filterexams: function() {
+            return this.allexams.filter((item)=> {
+                return item.examName.match(this.search)  ;
+            })
+        },
+    }
 }
 </script>
 
-<style>
-
+<style scoped>
 </style>

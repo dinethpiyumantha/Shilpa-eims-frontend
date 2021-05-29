@@ -35,7 +35,8 @@
         <div class="row align-items-center">
           <div class="col-lg-6 mr-auto text-center text-lg-left">
             <h1 class="heading mb-3">Education.</h1>
-            <p class="mb-5"> “Education is the most powerful weapon which you can use to change the world” – <b>Nelson Mandela</b></p>
+            <p class="mb-5"> “Education is the great engine of personal development. It is through education that the daughter of a peasant can become a doctor, that the son of a mine worker can become the head of the mine, that a child of farm workers can become the president of
+               a great nation. It is what we make out of what we have, not what we are given, that separates one person from anothe” – <b>Nelson Mandela</b></p>
             <p class="right-float"><a href="#bottomSet" class="btn btn-danger">How to prevent covid</a></p>
 
           </div>
@@ -48,7 +49,7 @@
         </div>
       </div>
     </div>
-    <main role="main" class="mt-5 pt-5">
+    <main role="main" class="mt-2">
       <!-- Marketing messaging and featurettes
       ================================================== -->
       <!-- Wrap the rest of the page in another container to center all the content. -->
@@ -865,9 +866,9 @@ h1, h2, h3, h4, h5,
 
 /* Blocks */
 .hero-v1 {
-  padding: 6rem 0 6rem 0;
+  padding: 3rem 0 3rem 0;
   border-bottom-right-radius: 50%;
-  background: rgba(111, 66, 193, 0.1);
+  background: #92c4fd;
   overflow: hidden; }
   .hero-v1 .heading {
     font-weight: 900;

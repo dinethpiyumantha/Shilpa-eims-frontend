@@ -7,7 +7,7 @@
             </router-link>
 
             <form class="card-body" v-on:submit.prevent="submit">
-                <h4>Create a Time Schedule</h4>
+                <h4>Update Time Schedule</h4>
 
                 <div class="mt-4">
                     <div class="mb-0 col-12 d-flex flex-row gap-5">
@@ -110,7 +110,7 @@
                  
 
                 <div class="d-flex justify-content-center gap-3 row">
-                    <input type="submit" class="btn btn-primary w-auto" value="Add Time Schedule">
+                    <input type="submit" class="btn btn-primary w-auto" value="Update Time Schedule">
                     <input v-on:click="clearForm" type="button" class="btn btn-outline-primary w-auto" value="clear">
                 </div>
 

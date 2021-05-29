@@ -29,8 +29,10 @@
         <div class="accordion-body">
           <router-link to="/student"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Student</button></router-link>
           <router-link to="/add-student"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Add Student</button></router-link>
-          <router-link to="/student-report"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Report</button></router-link>
+          <router-link to="/studentsubject"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Student Subject</button></router-link>
           <router-link to="/subject"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Subject</button></router-link>
+          <router-link to="/student-report"><button type="button" class="btn btn-light w-100 rounded-0 pl-4 text-left">Report</button></router-link>
+        
         </div>
     </div>
   </div>

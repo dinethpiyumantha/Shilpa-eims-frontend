@@ -1,262 +1,279 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from "vue";
+import Router from "vue-router";
 // use router
-Vue.use(Router)
+Vue.use(Router);
 
-import Dashboard from '../views/Dashboard'
-import About from '../views/About'
-import UserHome from '../views/user-views/Home'
+import Dashboard from "../views/Dashboard";
+import About from "../views/About";
+import UserHome from "../views/user-views/Home";
 
-import Home from '../views/Home'
+import Home from "../views/Home";
 
-import TimeSchedule from '../views/time-scheduling/TimeSchedule'
-import AddTimeSchedule from '../views/time-scheduling/AddTimeSchedule'
-import Classroom from '../views/time-scheduling/Classroom'
-import ClassroomUpdate from '../views/time-scheduling/ClassroomUpdate'
-import TCReport from '../views/time-scheduling/Report'
-import TimeScheduleEdit from '../views/time-scheduling/UpdateTimeSchedule'
+import TimeSchedule from "../views/time-scheduling/TimeSchedule";
+import AddTimeSchedule from "../views/time-scheduling/AddTimeSchedule";
+import Classroom from "../views/time-scheduling/Classroom";
+import ClassroomUpdate from "../views/time-scheduling/ClassroomUpdate";
+import TCReport from "../views/time-scheduling/Report";
+import TimeScheduleEdit from "../views/time-scheduling/UpdateTimeSchedule";
 
-import Employee from '../views/employee/Employee'
-import AddEmployee from '../views/employee/AddEmployee'
-import EmpReport from '../views/employee/Report'
-import EmpEdit from '../views/employee/EditEmployee'
+import Employee from "../views/employee/Employee";
+import AddEmployee from "../views/employee/AddEmployee";
+import EmpReport from "../views/employee/Report";
+import EmpEdit from "../views/employee/EditEmployee";
 
 import Student from '../views/student/Students'
 import AddStudent from '../views/student/AddStudent'
 import SReport from '../views/student/Report'
 import Subject from '../views/student/Subject'
+import EditStudent from '../views/student/EditStudent'
+import StudentSubjects from '../views/student/StudentSubjects'
 
-import Result from '../views/examination/Result'
-import AddTeacher from '../views/teacher/addTeacher'
-import ListTeacher from '../views/teacher/listTeacher'
-import ReportTeacher from '../views/teacher/reportTeacher'
-import SubjectTeacher from '../views/teacher/subjectTeacher'
+import Result from "../views/examination/Result";
+import AddTeacher from "../views/teacher/addTeacher";
+import ListTeacher from "../views/teacher/listTeacher";
+import ReportTeacher from "../views/teacher/reportTeacher";
+import SubjectTeacher from "../views/teacher/subjectTeacher";
 
-import AddExamination from '../views/examination/AddExamination'
-import EReport from '../views/examination/Report'
-import ViewExamination from '../views/examination/ViewExamination'
-import EditExamination from '../views/examination/EditExamination' 
+import AddExamination from "../views/examination/AddExamination";
+import EReport from "../views/examination/Report";
+import ViewExamination from "../views/examination/ViewExamination";
+import EditExamination from "../views/examination/EditExamination";
 
-import FeePayment from '../views/finance/FeePayment'
-import PReport from '../views/finance/Report'
-import SmallExpenses from '../views/finance/SmallExpenses'
+import FeePayment from "../views/finance/FeePayment";
+import PReport from "../views/finance/Report";
+import SmallExpenses from "../views/finance/SmallExpenses";
 
-import Attendance from '../views/attendance/Attendance'
-import AddAttendance from '../views/attendance/AddAttendance'
-import ATTReport from '../views/attendance/Report'
+import Attendance from "../views/attendance/Attendance";
+import AddAttendance from "../views/attendance/AddAttendance";
+import ATTReport from "../views/attendance/Report";
 
-import updateAttendance from '../views/attendance/updateAttendance'
+import updateAttendance from "../views/attendance/updateAttendance";
 
-import Notice from '../views/notice/Notice'
-import NoticeControler from '../views/notice/NoticeControler'
-import Report from '../views/notice/Report'
+import Notice from "../views/notice/Notice";
+import NoticeControler from "../views/notice/NoticeControler";
+import Report from "../views/notice/Report";
 
 export default new Router({
-  mode: 'history',
+  mode: "history",
   routes: [
     {
-      path: '/admin',
-      name: 'Admin Panel',
+      path: "/admin",
+      name: "Admin Panel",
       component: Dashboard,
       children: [
         {
-          path: '/about',
-          name: 'About',
+          path: "/about",
+          name: "About",
           component: About
         },
         {
-          path: '/home',
-          name: 'Home',
+          path: "/home",
+          name: "Home",
           component: Home
         },
         // Dineth
         {
-          path: '/schedule',
-          name: 'Schedule',
+          path: "/schedule",
+          name: "Schedule",
           component: TimeSchedule,
           children: [
             {
-              path: '/schedule/edit/:id',
-              name: 'Schedule Edit',
-              component: TimeScheduleEdit,
+              path: "/schedule/edit/:id",
+              name: "Schedule Edit",
+              component: TimeScheduleEdit
             }
           ]
         },
         {
-          path: '/add-schedule',
-          name: 'Add Schedule',
+          path: "/add-schedule",
+          name: "Add Schedule",
           component: AddTimeSchedule
         },
         {
-          path: '/classroom',
-          name: 'Classroom',
+          path: "/classroom",
+          name: "Classroom",
           component: Classroom,
           children: [
             {
-              path: '/classroom/edit/:id',
-              name: 'Classroom Update',
+              path: "/classroom/edit/:id",
+              name: "Classroom Update",
               component: ClassroomUpdate
             }
           ]
         },
         {
-          path: '/time-class-report',
-          name: 'Time Schedule and Classroom Report',
+          path: "/time-class-report",
+          name: "Time Schedule and Classroom Report",
           component: TCReport
         },
         // Asanka
         {
-          path: '/add-employee',
-          name: 'Add Employee',
+          path: "/add-employee",
+          name: "Add Employee",
           component: AddEmployee
         },
         {
-          path: '/employees',
-          name: 'Employees',
+          path: "/employees",
+          name: "Employees",
           component: Employee
         },
         {
-          path: '/report-employee',
-          name: 'Employee Report',
+          path: "/report-employee",
+          name: "Employee Report",
           component: EmpReport
         },
-        
-        {
-        path: '/Edit-Employee/:id',
-        name: 'EditEmployee',
-        component: EmpEdit
-      },
 
-        // Lakshan
         {
-          path: '/student',
-          name: 'Student',
+          path: "/Edit-Employee/:id",
+          name: "EditEmployee",
+          component: EmpEdit
+        },
+
+        //LAKSHAN
+
+        {
+          path: "/student",
+          name: "Student",
           component: Student
         },
+
         {
-          path: '/add-student',
-          name: 'Add Student',
+          path: "/add-student",
+          name: "Add Student",
           component: AddStudent
         },
         {
-          path: '/student-report',
-          name: 'Student Report',
+          path: "/student-report",
+          name: "Student Report",
           component: SReport
         },
         {
-          path: '/subject',
-          name: 'Subject',
+          path: "/subject",
+          name: "Subject",
           component: Subject
         },
+
+        {
+          path: "/Edit-Student/:id",
+          name: "EditStudent",
+          component: EditStudent
+        },
+
+        {
+          path: "/StudentSubject",
+          name: "StudentSubject",
+          component: StudentSubjects
+        },
+
         // Pawan
         {
-          path: '/result',
-          name: 'Result',
+          path: "/result",
+          name: "Result",
           component: Result
         },
         {
-          path: '/add-examination',
-          name: 'Add Examination',
+          path: "/add-examination",
+          name: "Add Examination",
           component: AddExamination
         },
 
         {
-          path: '/examination-report',
-          name: 'Examination Report',
+          path: "/examination-report",
+          name: "Examination Report",
           component: EReport
         },
-        
+
         {
-          path: '/editexamination/:id',
-          name: 'editexam',
+          path: "/editexamination/:id",
+          name: "editexam",
           component: EditExamination
         },
         {
-          path: '/view-examination',
-          name: 'View Examination',
+          path: "/view-examination",
+          name: "View Examination",
           component: ViewExamination
         },
- 
+
         // Deen
         {
-          path: '/fee-payment',
-          name: 'Fee Payment',
+          path: "/fee-payment",
+          name: "Fee Payment",
           component: FeePayment
         },
         {
-          path: '/payment-report',
-          name: 'Payment Report',
+          path: "/payment-report",
+          name: "Payment Report",
           component: PReport
         },
         {
-          path: '/small-expenses',
-          name: 'Small Expenses',
+          path: "/small-expenses",
+          name: "Small Expenses",
           component: SmallExpenses
         },
         // Sadisha
         {
-          path: '/attendance',
-          name: 'Attendance',
+          path: "/attendance",
+          name: "Attendance",
           component: Attendance
         },
         {
-          path: '/add-attendance',
-          name: 'Add Attendance',
+          path: "/add-attendance",
+          name: "Add Attendance",
           component: AddAttendance
         },
         {
-          path: '/attendance-report',
-          name: 'Attendance Report',
+          path: "/attendance-report",
+          name: "Attendance Report",
           component: ATTReport
         },
         {
-          path: '/attendance-update/:id',
-          name: 'Attendance Report',
+          path: "/attendance-update/:id",
+          name: "Attendance Report",
           component: updateAttendance
         },
         // Thisara
         {
-          path: '/notification',
-          name: 'Notifications',
+          path: "/notification",
+          name: "Notifications",
           component: Notice
         },
         {
-          path: '/controler-notification',
-          name: 'Notifications',
+          path: "/controler-notification",
+          name: "Notifications",
           component: NoticeControler
         },
         {
-          path: '/notification-report',
-          name: 'Notifications',
+          path: "/notification-report",
+          name: "Notifications",
           component: Report
         },
         // Sandani
         {
-          path: '/add-teacher',
-          name: 'Add Teacher',
+          path: "/add-teacher",
+          name: "Add Teacher",
           component: AddTeacher
         },
         {
-          path: '/list-teacher',
-          name: 'List Teacher',
+          path: "/list-teacher",
+          name: "List Teacher",
           component: ListTeacher
         },
         {
-          path: '/report-teacher',
-          name: 'Report Teacher',
+          path: "/report-teacher",
+          name: "Report Teacher",
           component: ReportTeacher
         },
         {
-          path: '/subject-teacher',
-          name: 'Subject Teacher',
+          path: "/subject-teacher",
+          name: "Subject Teacher",
           component: SubjectTeacher
-        },
+        }
       ]
     },
     {
-      path: '/',
-      name: 'User View',
+      path: "/",
+      name: "User View",
       component: UserHome
     }
   ]
-})
+});

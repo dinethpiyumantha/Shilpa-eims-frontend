@@ -20,6 +20,12 @@ Vue.filter('formatDate', function(value) {
     }
 });
 
+Vue.filter('formatMonth', function(value) {
+    if (value) {
+        return moment(String(value)).format('MMMM')
+    }
+});
+
 export default {
   components : {
     'dashboard' : Dashboard
